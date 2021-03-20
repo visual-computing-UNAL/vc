@@ -20,4 +20,4 @@
 
 > :Collapse label=Team
 > 
-> [NN](/docs/members/nn)
+> [NN](/docs/team/nn)
