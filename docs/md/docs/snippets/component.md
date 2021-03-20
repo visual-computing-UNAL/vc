@@ -15,7 +15,7 @@ Component used to display the [p5.js](https://p5js.org) code snippets found in t
 | height   | Sketch height. Default is 600                                    |
 | p5lib    | path to p5.js lib. Either provided locally or by a CDN. Use it for debugging or developping offline. Default is to use p5.min.js CDN according to the `version` param |
 | p5sound  | path to p5.sound.js lib. Either provided locally or by a CDN. Use it for debugging or developping offline. Default is to use p5.sound.min.js CDN according to the `version` param |
-| version  | p5.min.js and p5.sound.min.js version default is 1.2.0           |
+| version  | p5.min.js and p5.sound.min.js version default is 1.3.0           |
 | sound    | Either *true* or *false* default is false                        |
 | lib1     | path to community library 1. Either provided locally or by a CDN |
 | lib2     | path to community library 2. Either provided locally or by a CDN |
