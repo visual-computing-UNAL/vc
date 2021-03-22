@@ -1,7 +1,7 @@
 # Jaime Eduardo Estupiñan
 
 ## Bio
-I was born in Bogota and I started a study systems engineer at Universidad Nacional De Colombia in 2017.
+I was born in Bogota and I started a study systems engineering at Universidad Nacional De Colombia in 2017.
 
 ## Interests
 
