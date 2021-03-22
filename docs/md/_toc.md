@@ -20,4 +20,7 @@
 
 > :Collapse label=Members
 > 
-> [NN](/docs/members/nn)
+> [acastillos](/docs/members/acastillos)
+> [sapinedave](/docs/members/sapinedave)
+> [jestupinanb](/docs/members/jestupinanb)
+> [jpbetancourtma](/docs/members/jpbetancourtma)
