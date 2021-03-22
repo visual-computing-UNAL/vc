@@ -1,13 +1,24 @@
 # Jaime Eduardo Estupiñan
 
 ## Bio
-Soy jaime me gutan las hamburguesas y las pizas 
-## Interests
-asdfasdf
-## Contributions
+I was born in Bogota and I started a study systems engineer at Universidad Nacional De Colombia in 2017.
 
-papers, blogs, research, free software...
+## Interests
+
+-Data structures
+
+-Algorithms
+
+-Internship 
+
+## Contributions
+I have been part of competitive program
 
 ## Hobbies
+-listen music
+
+-play videogames
+
+## Visual Effect
 
 > :ToCPrevNext
