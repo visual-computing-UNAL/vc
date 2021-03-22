@@ -18,9 +18,9 @@
 > [Libs](/docs/snippets/lib)
 > [Sound](/docs/snippets/sound)
 
-> :Collapse label=Members
+> :Collapse label=Team
 > 
-> [acastillos](/docs/members/acastillos)
-> [sapinedave](/docs/members/sapinedave)
-> [jestupinanb](/docs/members/jestupinanb)
-> [jpbetancourtma](/docs/members/jpbetancourtma)
+> [acastillos](/docs/team/acastillos)
+> [sapinedave](/docs/team/sapinedave)
+> [jestupinanb](/docs/team/jestupinanb)
+> [jpbetancourtma](/docs/team/jpbetancourtma)
