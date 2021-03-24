@@ -77,12 +77,12 @@ The webpage is to be developed in _markdown_ ([CommonMark](https://spec.commonma
    codedoc serve
    ```
    *Note:* to also [run the p5.js sketches locally](https://codedoc.cc/docs/config/output#build-files-on-git) link `dist/docs/sketches` to the `sketches` folder.
-   1. In Linux
+   1. In Linux:
       ```shell
       cd dist/docs/
       ln -s ../../docs/sketches
       ```
-   2. In Windows (from cmd as Administrator):
+   2. In Windows (from the [cli](https://en.wikipedia.org/wiki/Command-line_interface) as administrator):
       ```shell
       cd dist/docs/
       Mklink /D sketches ".\..\..\docs\sketches"
