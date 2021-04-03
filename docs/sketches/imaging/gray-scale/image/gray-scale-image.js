@@ -1,27 +1,66 @@
-let img;
-let img2;
+let original;
+
+function preload() {
+    original = loadImage('/vc/docs/sketches/imaging/gray-scale/image/image-test.jpg');
+}
 
 function setup() {
     createCanvas(800, 800);
-    img = loadImage('/vc/docs/sketches/imaging/gray-scale/image/image-test.jpg'); // Load the image
-    img2 = loadImage('/vc/docs/sketches/imaging/gray-scale/image/image-test.jpg'); // Load the image
+    noLoop();
 }
 
 function draw() {
-    // Displays the image at its actual size at point (0,0)
-    img2.loadPixels();
-    for (let i = 0; i < img2.width; i++) {
-        for (let j = 0; j < img2.height; j++) {
-            let colorArr = img2.get(i, j);
-            let average = (colorArr[0] + colorArr[1] + colorArr[2]) / 3;
-            let index = (i + j * img2.width) * 4;
-            img2.pixels[index + 0] = average;
-            img2.pixels[index + 1] = average;
-            img2.pixels[index + 2] = average;
-            img2.pixels[index + 3] = 255;
+
+    average = createImage(original.width, original.height);
+    luminance = createImage(original.width, original.height);
+    luma = createImage(original.width, original.height);
+
+    original.loadPixels();
+
+    image(original, 0, 0);
+
+    average.loadPixels();
+    for (let i = 0; i < original.width; i++) {
+        for (let j = 0; j < original.height; j++) {
+            let colorArr = original.get(i, j);
+            let averageRGB = (colorArr[0] + colorArr[1] + colorArr[2]) / 3;
+            let index = (i + j * original.width) * 4;
+            average.pixels[index + 0] = averageRGB;
+            average.pixels[index + 1] = averageRGB;
+            average.pixels[index + 2] = averageRGB;
+            average.pixels[index + 3] = 255;
         }
     }
-    img2.updatePixels();
-    image(img, 0, 0);
-    image(img2, 400, 0);
+    average.updatePixels();
+    image(average, 400, 0);
+
+    luminance.loadPixels();
+    for (let i = 0; i < original.width; i++) {
+        for (let j = 0; j < original.height; j++) {
+            let colorArr = original.get(i, j);
+            let averageRGB = (0.2126*colorArr[0]) + (0.7152*colorArr[1]) + (0.0722*colorArr[2]);
+            let index = (i + j * original.width) * 4;
+            luminance.pixels[index + 0] = averageRGB;
+            luminance.pixels[index + 1] = averageRGB;
+            luminance.pixels[index + 2] = averageRGB;
+            luminance.pixels[index + 3] = 255;
+        }
+    }
+    luminance.updatePixels();
+    image(luminance, 0, 400);
+
+    luma.loadPixels();
+    for (let i = 0; i < original.width; i++) {
+        for (let j = 0; j < original.height; j++) {
+            let colorArr = original.get(i, j);
+            let averageRGB = (0.2126*colorArr[0]) + (0.7152*colorArr[1]) + (0.0722*colorArr[2]);
+            let index = (i + j * original.width) * 4;
+            luma.pixels[index + 0] = averageRGB;
+            luma.pixels[index + 1] = averageRGB;
+            luma.pixels[index + 2] = averageRGB;
+            luma.pixels[index + 3] = 255;
+        }
+    }
+    luma.updatePixels();
+    image(luma, 400, 400);
 }
