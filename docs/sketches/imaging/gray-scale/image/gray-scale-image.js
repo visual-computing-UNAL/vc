@@ -2,9 +2,9 @@ let img;
 let img2;
 
 function setup() {
-    createCanvas(800, 400);
-    img = loadImage('/vc/docs/sketches/image-test/image-test.jpg'); // Load the image
-    img2 = loadImage('/vc/docs/sketches/image-test/image-test.jpg'); // Load the image
+    createCanvas(800, 800);
+    img = loadImage('/vc/docs/sketches/imaging/gray-scale/image/image-test.jpg'); // Load the image
+    img2 = loadImage('/vc/docs/sketches/imaging/gray-scale/image/image-test.jpg'); // Load the image
 }
 
 function draw() {

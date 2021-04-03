@@ -2,14 +2,26 @@
 
 ## Ejemplos filtros
 
-> :P5 sketch=/docs/sketches/image-test/image-normal.js, width=520, height=400
+> :P5 sketch=/docs/sketches/imaging/example-filters/image-filters.js, width=1500, height=500
 
-> :P5 sketch=/docs/sketches/image-test/image-negative.js, width=520, height=400
+## Conversión a escala de grises.
 
-> :P5 sketch=/docs/sketches/image-test/image-gray.js, width=520, height=400
+### Imagen
+> :P5 sketch=/docs/sketches/imaging/gray-scale/image/gray-scale-image.js, width=800, height=800
+### Video
+> :P5 sketch=/docs/sketches/imaging/gray-scale/video/gray-scale-video.js, width=800, height=800
 
-## Escala de Grises con Promedio
+## Aplicación de algunas máscaras de convolución.
 
-> :P5 sketch=/docs/sketches/image-test/average-gray.js, width=800, height=400
+### Imagen
+> :P5 sketch=/docs/sketches/imaging/gray-scale/image/gray-scale-image.js, width=800, height=800
+### Video
+> :P5 sketch=/docs/sketches/imaging/gray-scale/video/gray-scale-video.js, width=800, height=800
+
+## Conversión de la imagen a ascii art
+> :P5 sketch=/docs/sketches/imaging/acii-art/ascii-art.js, width=800, height=800
+
+## Conversión de la imagen a un foto-mosaico
+> :P5 sketch=/docs/sketches/imaging/foto-mosaico/foto-mosaico.js, width=800, height=800
 
 > :ToCPrevNext
