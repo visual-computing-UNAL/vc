@@ -22,7 +22,7 @@ Me he enfocado practicamente todo el tiempo en mis estudios y por lo tanto no he
 
 ## Visual Effect: Imagen negativa a color
 
-### Observe el punto en la imagen durante 30 segundos y depues de click
+### Observe el punto en la imagen durante 30 segundos y depues haga click sobre la imagen
 
 Al dar click vera la imagen a color pero esta es en realidad una imagen a blanco y negro
 
