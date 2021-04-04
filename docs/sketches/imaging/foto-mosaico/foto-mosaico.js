@@ -3,7 +3,7 @@ let smaller;
 
 let colors_img = [];
 let colors_avg_img = [];
-let size_avg_img = 165;
+let size_avg_img = 173;
 
 let scale = 8;
 let create_img = false;
@@ -16,14 +16,14 @@ function preload(){
 
 function preloadFilesColors(){
     let dir_img = '/vc/docs/sketches/imaging/foto-mosaico/images/colors/'
-    for(let i=0;i<size_avg_img;i++){
+    for(let i=1;i<=size_avg_img;i++){
         let curr_img = loadImage(dir_img+i+'.jpg');
         colors_img.push(curr_img);
     }
 }
 
 function setup() {
-    createCanvas(1000, 800);
+    createCanvas(800, 500);
     if(create_img){
         createImagesAverageColor();
     }
