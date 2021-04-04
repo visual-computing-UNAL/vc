@@ -5,11 +5,11 @@ let colors_img = [];
 let colors_avg_img = [];
 let size_avg_img = 173;
 
-let scale = 8;
+let scale = 5;
 let create_img = false;
 
 function preload(){
-    img = loadImage('/vc/docs/sketches/imaging/foto-mosaico/images/panda.jpg'); // Load the image
+    img = loadImage('/vc/docs/sketches/imaging/foto-mosaico/images/flamenco.jpg'); // Load the image
     preloadFilesColors();
     preloadAverageImg();
 }
@@ -23,7 +23,7 @@ function preloadFilesColors(){
 }
 
 function setup() {
-    createCanvas(800, 500);
+    createCanvas(1090, 800);
     if(create_img){
         createImagesAverageColor();
     }
@@ -77,7 +77,7 @@ function loadAvgImg(){
 function draw() {
     //background(0);
     print(colors_avg_img,colors_avg_img.length)
-    let reduce = 1.3;
+    let reduce = 1.5;
     // print('img width 2',img.width)
     let w = img.width/scale/reduce;
     let h = img.height/scale/reduce;

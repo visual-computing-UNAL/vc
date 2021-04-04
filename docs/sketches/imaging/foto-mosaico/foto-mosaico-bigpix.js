@@ -5,7 +5,7 @@ let colors_img = [];
 let colors_avg_img = [];
 let size_avg_img = 173;
 
-let scale = 8;
+let scale = 15;
 let create_img = false;
 
 function preload(){
