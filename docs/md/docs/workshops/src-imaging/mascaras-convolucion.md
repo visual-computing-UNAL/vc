@@ -7,3 +7,4 @@
 
 ## Video
 > :P5 sketch=/docs/sketches/imaging/mascaras-convolucion/video/m-convolucion-video.js, width=800, height=800
+  
