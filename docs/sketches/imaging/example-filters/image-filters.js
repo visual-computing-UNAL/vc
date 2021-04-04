@@ -9,7 +9,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(1500, 500);
+  createCanvas(500, 1500);
   noLoop();
 }
 
@@ -17,6 +17,6 @@ function draw() {
   grayscale.filter(GRAY);
   invert.filter(INVERT);
   image(original, 0, 0);
-  image(grayscale, 500, 0);
-  image(invert, 1000, 0);
+  image(grayscale, 0, 500);
+  image(invert, 0, 1000);
 }
