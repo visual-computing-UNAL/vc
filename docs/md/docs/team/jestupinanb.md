@@ -1,7 +1,7 @@
 # Jaime Eduardo Estupiñan
 
 ## Biografia
-Naci en Bogota, pero vivi gran parte de mi vida en casanare, hasta que volvi a Bogota a estudiar en la Universidad Nacional De Colombia en 2017, estudio ingenieria de sistemas.
+Nací en Bogotá, pero viví gran parte de mi vida en casanare, hasta que volví a Bogotá a estudiar en la Universidad Nacional De Colombia en 2017, estudio ingeniería de sistemas.
 
 ## Interests
 
@@ -9,11 +9,11 @@ Naci en Bogota, pero vivi gran parte de mi vida en casanare, hasta que volvi a B
 
 -Estructuras de datos
 
--Ingenieria de software
+-Ingeniería de software
 
 ## Contributions
 
-Me he enfocado practicamente todo el tiempo en mis estudios y por lo tanto no he realizado contribuciones, aunque me gustaria realizar contribuciones a software libre.
+Me he enfocado prácticamente todo el tiempo en mis estudios y por lo tanto no he realizado contribuciones, aunque me gustaría realizar contribuciones a software libre.
 
 ## Hobbies
 -Escuchar musica
@@ -30,12 +30,13 @@ Al dar click vera la imagen a color pero esta es en realidad una imagen a blanco
 
 ### Explicacion
 
-Si exponemos nuestro ojo de forma continuada al os colores de la imagen orignal, los fotorreceptores de la retina quedan insesibilizados para esos colores. 
+Si exponemos nuestro ojo de forma continuada á los colores de la imagen original, los fotorreceptores de la retina quedan insensibilizados para esos colores.
+ 
+Para evetiar este efecto el ojo suele realizar pequeños movimientos automáticos, estos desplazan la imagen ligeramente sobre la retina, creando el efecto de refrescar la información de los fotorreceptores, previniendo asi la su saturación y, por lo tanto, su sensibilidad no se ve afectada.
+ 
+Por esa razón es importante ver de manera fija el punto en la imagen, asi estariamos forzando al ojo a quedarse quieto, de manera que cada receptor capte durante los 30 segundos la misma información. Debido a  esta sobreexposición, los fotorreceptores agotan su reserva de fotopigmento, resultando así en una disminución de la señal que llega al cerebro. El resultado de esta señal adulterada es que al pasar a mirar la imagen original, vemos los colores opuestos que habíamos visto en la imagen negativo.
+ 
+Por esto si saturamos nuestro ojo con una imagen. la reacción acaba siendo la aparición de la misma imagen con sus colores negativos.
 
-Para evetiar est eefeccto el ojo suele relaizar pequeños movimientos automaticos, estos desplazan la imagen ligeramente sobre la retina, creando el efecto de refrescar la informacion de los fotorreceptores, previniendo asi la su saturacion y, por lo tanto, su sensibilidad no se ve afectada.
-
-Por esa razon es importante ver de manera fija el punto en la imagen, asi estariamos forzando al ojo a quedarse quieto, de manera que cada receptor capte durante los 30 segundos la misma informacion. Debido a  esta sobreexposicion, los fotorreceptreos agotan su reserva de fotopigmento, resultando asi en una disminucion de la señal que llega al cerebro. El resultado de esta señal adulterada es que al pasar a mirar la imagen original, vemos los colores opuestos que habiamos visto en la imagen negativo.
-
-Por esto si saturamos nuestro ojo con una imagen. la reaccion acaba siendo la aparicion de la misma imagen con sus colores negativos. 
 
 > :ToCPrevNext
