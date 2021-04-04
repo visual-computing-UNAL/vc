@@ -4,7 +4,7 @@ let smaller;
 let create_img = false;
 
 function preload(){
-    img = loadImage('/vc/docs/sketches/imaging/foto-mosaico/images/gaviota.jpg'); // Load the image
+    img = loadImage('/vc/docs/sketches/imaging/foto-mosaico/images/panda.jpg'); // Load the image
 }
 
 function setup() {
