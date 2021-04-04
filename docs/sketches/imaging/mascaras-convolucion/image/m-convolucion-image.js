@@ -18,10 +18,10 @@ function setup() {
 function draw() {
   let mat_size = 3;
   loadPixels();
-   for (let x = 0; x < img.width; x++) {
-    for (let y = 0; y < img.height; y++ ) {
-      let conv = convolution(x, y, mat, mat_size, img);
-      let position = (x + y*img.width) * 4;
+   for (let i = 0; i < img.width; i++) {
+    for (let j = 0; j < img.height; j++ ) {
+      let conv = setConvolution(i, j, mat, mat_size, img);
+      let position = (i + j * img.width) * 4;
       setPixels(position, conv);
     }
   }
@@ -40,12 +40,12 @@ function calculateTotal(position, mat_pos){
 }
 
 function setPosition(height, width, i, j, out_bounds){
-    const heightloc = (height + i - out_bounds);
-    const widthloc = (width + j - out_bounds);
-    return position = (heightloc + img.width * widthloc) * 4;
+    const heightPos = (height + i - out_bounds);
+    const widthPos = (width + j - out_bounds);
+    return position = (heightPos + img.width * widthPos) * 4;
 }
 
-function convolution(height, width, mat, mat_size, img) {
+function setConvolution(height, width, mat, mat_size, img) {
   let r = 0.0, g = 0.0, b = 0.0, out_bounds = Math.floor(mat_size / 2);
   for (let i = 0; i < mat_size; i++){
     for (let j = 0; j < mat_size; j++){
