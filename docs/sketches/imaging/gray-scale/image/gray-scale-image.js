@@ -5,7 +5,7 @@ function preload() {
 }
 
 function setup() {
-    createCanvas(800, 800);
+    createCanvas(800, 1200);
     noLoop();
 }
 
@@ -13,11 +13,34 @@ function draw() {
 
     average = createImage(original.width, original.height);
     luminance = createImage(original.width, original.height);
-    luma = createImage(original.width, original.height);
+    luma1 = createImage(original.width, original.height);
+    luma2 = createImage(original.width, original.height);
+    luma3 = createImage(original.width, original.height);
 
     original.loadPixels();
 
     image(original, 0, 0);
+    textSize(32);
+    fill(255, 0, 0);
+    text("Original", 10, 40);
+
+    luminance.loadPixels();
+    for (let i = 0; i < original.width; i++) {
+        for (let j = 0; j < original.height; j++) {
+            let colorArr = original.get(i, j);
+            let averageRGB = (0.2126 * colorArr[0]) + (0.7152 * colorArr[1]) + (0.0722 * colorArr[2]);
+            let index = (i + j * original.width) * 4;
+            luminance.pixels[index + 0] = averageRGB;
+            luminance.pixels[index + 1] = averageRGB;
+            luminance.pixels[index + 2] = averageRGB;
+            luminance.pixels[index + 3] = 255;
+        }
+    }
+    luminance.updatePixels();
+    image(luminance, 400, 0);
+    textSize(32);
+    fill(255, 0, 0);
+    text("Luminance", 410, 40);
 
     average.loadPixels();
     for (let i = 0; i < original.width; i++) {
@@ -32,35 +55,68 @@ function draw() {
         }
     }
     average.updatePixels();
-    image(average, 400, 0);
+    image(average, 0, 400);
+    textSize(32);
+    fill(255, 0, 0);
+    text("Average", 10, 440);
 
-    luminance.loadPixels();
+    y1 = 1;
+    luma1.loadPixels();
     for (let i = 0; i < original.width; i++) {
         for (let j = 0; j < original.height; j++) {
             let colorArr = original.get(i, j);
-            let averageRGB = (0.2126*colorArr[0]) + (0.7152*colorArr[1]) + (0.0722*colorArr[2]);
+            colorArr.forEach((value, index) => { colorArr[index] = Math.pow(value / 255, y1) * 255 });
+            let averageRGB = (0.299 * colorArr[0]) + (0.587 * colorArr[1]) + (0.114 * colorArr[2]);
             let index = (i + j * original.width) * 4;
-            luminance.pixels[index + 0] = averageRGB;
-            luminance.pixels[index + 1] = averageRGB;
-            luminance.pixels[index + 2] = averageRGB;
-            luminance.pixels[index + 3] = 255;
+            luma1.pixels[index + 0] = averageRGB;
+            luma1.pixels[index + 1] = averageRGB;
+            luma1.pixels[index + 2] = averageRGB;
+            luma1.pixels[index + 3] = 255;
         }
     }
-    luminance.updatePixels();
-    image(luminance, 0, 400);
+    luma1.updatePixels();
+    image(luma1, 400, 400);
+    textSize(32);
+    fill(255, 0, 0);
+    text("Luma Y=1", 410, 440);
 
-    luma.loadPixels();
+    y2 = 1/4;
+    luma2.loadPixels();
     for (let i = 0; i < original.width; i++) {
         for (let j = 0; j < original.height; j++) {
             let colorArr = original.get(i, j);
-            let averageRGB = (0.2126*colorArr[0]) + (0.7152*colorArr[1]) + (0.0722*colorArr[2]);
+            colorArr.forEach((value, index) => { colorArr[index] = Math.pow(value / 255, y2) * 255 });
+            let averageRGB = (0.299 * colorArr[0]) + (0.587 * colorArr[1]) + (0.114 * colorArr[2]);
             let index = (i + j * original.width) * 4;
-            luma.pixels[index + 0] = averageRGB;
-            luma.pixels[index + 1] = averageRGB;
-            luma.pixels[index + 2] = averageRGB;
-            luma.pixels[index + 3] = 255;
+            luma2.pixels[index + 0] = averageRGB;
+            luma2.pixels[index + 1] = averageRGB;
+            luma2.pixels[index + 2] = averageRGB;
+            luma2.pixels[index + 3] = 255;
         }
     }
-    luma.updatePixels();
-    image(luma, 400, 400);
+    luma2.updatePixels();
+    image(luma2, 0, 800);
+    textSize(32);
+    fill(255, 0, 0);
+    text("Luma Y=1/4 ", 10, 840);
+
+    y3 = 4;
+    luma3.loadPixels();
+    for (let i = 0; i < original.width; i++) {
+        for (let j = 0; j < original.height; j++) {
+            let colorArr = original.get(i, j);
+            colorArr.forEach((value, index) => { colorArr[index] = Math.pow(value / 255, y3) * 255 });
+            let averageRGB = (0.299 * colorArr[0]) + (0.587 * colorArr[1]) + (0.114 * colorArr[2]);
+            let index = (i + j * original.width) * 4;
+            luma3.pixels[index + 0] = averageRGB;
+            luma3.pixels[index + 1] = averageRGB;
+            luma3.pixels[index + 2] = averageRGB;
+            luma3.pixels[index + 3] = 255;
+        }
+    }
+    luma3.updatePixels();
+    image(luma3, 400, 800);
+    textSize(32);
+    fill(255, 0, 0);
+    text("Luma Y=4  ", 410, 840);
 }
