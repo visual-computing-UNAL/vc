@@ -1,10 +1,20 @@
-# Aplicación de algunas máscaras de convolución.
-
+# Aplicación de máscara de convolución sobre imagen y video.
 > [Volver](/docs/workshops/imaging)
 
-## Imagen
-> :P5 sketch=/docs/sketches/imaging/mascaras-convolucion/image/m-convolucion-image.js, width=800, height=800
+## Descripción
 
+Este ejercicio tiene como objetivo que por el proceso de convolución, cada elemento de la imagen sea evaluado por un kernel y de esta manera ciertas características de la imagen de entrada sean alteradas.
+Para ver los cambios ocasionados por el uso del Kernel en el proceso de uso de máscaras de convolución sobre una imagen, proveemos su original para ser detallado previamente. 
+## Imagen Original
+> :P5 sketch=/docs/sketches/imaging/mascaras-convolucion/image/m-convolucion-imagenOriginal.js, width=400, height=400
+
+## Proceso de Aplicación de máscara de convolución sobre una imagen
+
+Una vez el color resultante del proceso de convolución, este debe aplicarse a cada cuadro de la imagen y el resultado es el siguiente: 
+## Imagen con Máscara de Convolución
+> :P5 sketch=/docs/sketches/imaging/mascaras-convolucion/image/m-convolucion-image.js, width=400, height=400
 ## Video
-> :P5 sketch=/docs/sketches/imaging/mascaras-convolucion/video/m-convolucion-video.js, width=800, height=800
+### (hacer click en los cuadros para correr los videos)
+Para este caso podemos observar el video original, el cual ha sido sujeto a la aplicación de una máscara de convolución y su resultado se encuentra abajo de este. 
+> :P5 sketch=/docs/sketches/imaging/mascaras-convolucion/video/m-convolucion-video.js, width=350, height=550
   
