@@ -20,6 +20,9 @@ He realizado contribuciones en proyectos de desarrollo móvil y en proyectos de 
 
 ## Visual Illusion: Jugando con colores
 
+A continuación podremos observar que al darle click izquierdo la esfera empezará a girar. En este momento podremos notar como esta cambia de color debido a la velocidad con la que esta girando la misma.
+
+De la misma forma podemos dar click derecho para ver como este efecto cambia con otros colores dentro de la esfera.
 
 > :P5 sketch=/docs/sketches/team/acastillos/ilusion.js, width=400, height=400
 
