@@ -30,6 +30,15 @@ Una vez el color resultante del proceso de convolución, este debe aplicarse a c
 
 ## Video
 ### (hacer click en los cuadros para correr los videos)
+
+## Matriz de Bordes
 Para este caso podemos observar el video original, el cual ha sido sujeto a la aplicación de una máscara de convolución y su resultado se encuentra abajo de este. 
 > :P5 sketch=/docs/sketches/imaging/mascaras-convolucion/video/m-convolucion-video.js, width=350, height=550
-  
+
+## Uno más de Detección de Bordes
+
+> :P5 sketch=/docs/sketches/imaging/mascaras-convolucion/video/m-convolucion-video-EdgeDetection.js, width=350, height=550
+
+## Matriz de Sharpen
+
+> :P5 sketch=/docs/sketches/imaging/mascaras-convolucion/video/m-convolucion-video-Sharpen.js, width=350, height=550
