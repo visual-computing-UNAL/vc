@@ -11,8 +11,23 @@ Para ver los cambios ocasionados por el uso del Kernel en el proceso de uso de m
 ## Proceso de Aplicación de máscara de convolución sobre una imagen
 
 Una vez el color resultante del proceso de convolución, este debe aplicarse a cada cuadro de la imagen y el resultado es el siguiente: 
+## Matrices de Detección de Bordes Utilizadas
+> :P5 sketch=/docs/sketches/imaging/mascaras-convolucion/image/m-convolucion-EdgeMatrix.js, width=130, height=130
+
+> :P5 sketch=/docs/sketches/imaging/mascaras-convolucion/image/oneMoreEdgeDetection.js, width=145, height=130
+
+## Matriz de Sharpen Utilizada
+> :P5 sketch=/docs/sketches/imaging/mascaras-convolucion/image/m-convolucion-SharpenMatrix.js, width=130, height=130
 ## Imagen con Máscara de Convolución
+## Matriz de Bordes
 > :P5 sketch=/docs/sketches/imaging/mascaras-convolucion/image/m-convolucion-image.js, width=400, height=400
+
+## Una más de Matriz de Detección de ordes
+> :P5 sketch=/docs/sketches/imaging/mascaras-convolucion/image/m-convolucion-imageEdgeDetection.js, width=400, height=400
+
+## Matriz de Sharpen
+> :P5 sketch=/docs/sketches/imaging/mascaras-convolucion/image/m-convolucion-imageSharpen.js, width=400, height=400
+
 ## Video
 ### (hacer click en los cuadros para correr los videos)
 Para este caso podemos observar el video original, el cual ha sido sujeto a la aplicación de una máscara de convolución y su resultado se encuentra abajo de este. 
