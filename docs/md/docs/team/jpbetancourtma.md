@@ -16,7 +16,7 @@ Desarrollé código para un mercado en la empresa en la que estoy trabajando act
 
 - Streaming
 
-## Visual Illusion
+## Visual Effect: Cuadro de Kanizsa
 
 ### Los contornos ilusorios
 
