@@ -99,4 +99,6 @@ The markdown of the above sketch looks like this (check the [component specs](/d
 > }, "colors"); // --> the id should be the same file name
 > ```
 
+Check the [component specs](/docs/snippets/component) for details.
+
 > :ToCPrevNext
