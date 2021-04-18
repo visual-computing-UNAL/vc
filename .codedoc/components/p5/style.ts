@@ -20,8 +20,8 @@ export const P5Style = themedStyle<CodedocTheme>(theme => ({
 
     '&.center': {
       margin: 'auto',
-      //width: '100%',
-      //border: '2px solid cyan',
+      width: '100%',
+      border: '2px solid magenta',
       //padding: '3px',
     },
 
