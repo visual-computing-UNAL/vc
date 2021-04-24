@@ -1,3 +1,20 @@
 # Rendering
 
+## Propósito
+
+Realizar indagación teórica-práctica de [rendering](https://visualcomputing.github.io/Rendering).
+
+## Tareas
+
+Escoger al menos una de las dos siguientes actividades:
+
+1. Realizar una indagación teórica de algún algoritmo de visibilidad o algún método de [iluminación global](https://en.wikipedia.org/wiki/Global_illumination).
+2. Visualizar algún algoritmo de rasterización, e.g., triángulo mediante el algoritmo de coordenas baricéntricas, [línea](https://en.wikipedia.org/wiki/Line_drawing_algorithm), etc. Nota: se puede emplear la librería [p5.quadrille.js](https://objetos.github.io/p5.quadrille.js/).
+
+## Entrega
+
+* Emplear esta página para realizar el reporte de la actividad en el formato de [blog-post](/#grading) sugerido.
+* Antes de las 24h del ~~4/4/21~~.
+* Exposiciones en las clase(s) subsiguiente(s). Tiempo: 7m (5m presentación del reporte + 2m preguntas).
+
 > :ToCPrevNext
