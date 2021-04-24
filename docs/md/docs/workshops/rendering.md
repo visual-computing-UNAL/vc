@@ -8,8 +8,8 @@ Realizar indagación teórica-práctica de [rendering](https://visualcomputing.g
 
 Escoger al menos una de las dos siguientes actividades:
 
-1. Realizar una indagación teórica de algún algoritmo de visibilidad o algún método de [iluminación global](https://en.wikipedia.org/wiki/Global_illumination).
-2. Visualizar algún algoritmo de rasterización, e.g., triángulo mediante el algoritmo de coordenas baricéntricas, [línea](https://en.wikipedia.org/wiki/Line_drawing_algorithm), etc. Nota: se puede emplear la librería [p5.quadrille.js](https://objetos.github.io/p5.quadrille.js/).
+1. Realizar una indagación teórica de algún [algoritmo de visibilidad](https://en.wikipedia.org/wiki/Hidden-surface_determination) o algún método de [iluminación global](https://en.wikipedia.org/wiki/Global_illumination).
+2. Visualizar algún algoritmo de computación visual, e.g., image-kernels [acá un ejemplo](https://setosa.io/ev/image-kernels/) o rasterización de un triángulo empleando coordenadas baricéntricas, etc. Nota: se puede emplear la librería [p5.quadrille.js](https://objetos.github.io/p5.quadrille.js/).
 
 ## Entrega
 
