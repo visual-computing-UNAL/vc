@@ -16,7 +16,7 @@ Introducir el análisis de imágenes/video al implementar las siguientes operaci
 ## Entrega
 
 * Emplear esta página para realizar el reporte de la actividad en el formato de [blog-post](/#grading) sugerido.
-* Antes de la exposición del 26/7/21 y 27/7/21 (en el horario de clase), grupos 1 y 2, resp.
+* Plazo del último commit: Antes de la exposición del 26/7/21 y 27/7/21 (en el horario de clase), grupos 1 y 2, resp.
 * Tiempo exposición: 7m (5m presentación del reporte + 2m preguntas).
 
 > :ToCPrevNext
