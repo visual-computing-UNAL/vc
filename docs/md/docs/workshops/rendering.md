@@ -14,7 +14,7 @@ Escoger al menos una de las dos siguientes actividades:
 ## Entrega
 
 * Emplear esta página para realizar el reporte de la actividad en el formato de [blog-post](/#grading) sugerido.
-* Antes de las 24h del ~~4/4/21~~.
-* Exposiciones en las clase(s) subsiguiente(s). Tiempo: 7m (5m presentación del reporte + 2m preguntas).
+* Antes de la exposición del 21/7/21 y 22/7/21 (en el horario de clase), grupos 1 y 2, resp.
+* Tiempo exposición: 7m (5m presentación del reporte + 2m preguntas).
 
 > :ToCPrevNext
