@@ -2,7 +2,8 @@
 
 > :Collapse label=Workshops
 > 
-> [Imaging & Video](/docs/workshops/imaging)
+> [Imaging & Video - Software](/docs/workshops/imaging-software)
+> [Imaging & Video - Hardware](/docs/workshops/imaging-hardware)
 > [Rendering](/docs/workshops/rendering)
 > [Algovis](/docs/workshops/algovis)
 > [Computer Graphics](/docs/workshops/cg)
