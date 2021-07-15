@@ -1,38 +1,37 @@
-var img;
-var resdiv;
-var options = [' ','`','.',',-',"':",';_~','"','*|','!l',
-'+=','>','<L','\\i','/^','1?','Jv','r','()cx','7}','sz',
-'3u','2Ckty{','jn','4FVY','5P[]af','qw','Sde','Eo',
-'NOZ','9HXgh','GTU','$AIm','QW','KM','%8','#06@','bp',
-'D','&','R','B'];
+let asciiShader;
+let shaderTexture;
 
-function preload()
-{
-  img = loadImage('/vc/docs/sketches/imaging/acii-art/test3.jpg');
+
+function preload() {
+  /*
+  img = loadImage('/vc/docs/sketches/lenna.png');
+  video = createVideo(['/vc/docs/sketches/fingers.mov', '/vc/docs/sketches/fingers.webm']);
+  asciiShader = loadShader('/vc/docs/sketches/ascii.vert', '/vc/docs/sketches/ascii.frag');
+  video.hide();
+  */
 }
 
 function setup() {
-  resdiv = createP('');
-  asciify(img);
+  /*
+  createCanvas(768, 393, WEBGL);
+  shaderTexture = createGraphics(393, 393, WEBGL);
+  shaderTexture.noStroke();
+
+  video.loop();
+  noStroke();
+  */
 }
 
-function asciify(pic) {
-  var res = '<pre>';
-  for (var i=0; i<60; i++) {
-    var line = '';
-    for (var j=0; j<168; j++) {
-      var x = pic.get(2+round(j*5.714),5+i*10);
-      var v = round((1-x[0]/255.0)*40);
-      var index = floor(random(options[v].length));
-      var chr = options[v][index];
-      if (chr==' ') chr='&nbsp;';
-      if (chr=='<') chr='&lt;';
-      if (chr=='>') chr='&gt;';
-      if (chr=='"') chr='&quot;';
-      line += chr;
-    }
-    res += line+'<br>';
-  }
-  res += '</pre>'
-  resdiv.html(res);
+function draw() {
+  /*
+  shaderTexture.shader(asciiShader);
+  asciiShader.setUniform('tex', img);
+  texture(shaderTexture);
+  shaderTexture.rect(0,0,393,393);
+  rect(-393,-393/2.0,393,393)
+  asciiShader.setUniform('tex', video);
+  texture(shaderTexture);
+  shaderTexture.rect(0,0,393,393);
+  rect(0,-393/2.0,393,393)
+  */
 }

@@ -8,7 +8,7 @@ Para el desarrollo de la conversión a ascii art se partió del proyecto públic
 
 ### Imagen Original
 
-> :P5 sketch=/docs/sketches/imaging-hardware/acii-art/ascii-art-original.js, width=800, height=500
+> :P5 sketch=/docs/sketches/imaging-hardware/acii-art/ascii-art.js, width=800, height=800
 
 ### Conversión a caracteres ascii
 
