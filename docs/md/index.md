@@ -54,11 +54,12 @@ The webpage is to be developed in _markdown_ ([CommonMark](https://spec.commonma
    gh repo fork #@see https://cli.github.com/manual/gh_repo_fork
    ```
    Note that the cloned repo already contains the [codedoc-p5-plugin](https://github.com/VisualComputing/vc/tree/main/.codedoc/components/p5) which is being developed separately [here](https://github.com/VisualComputing/codedoc-p5-plugin).
-3. Install  `codedoc` dependencies (don't forget to `cd vc` if you haven't already):
+3. Enable the workflow action using the github web interface of your `https://github.com/<gh-username>/vc` cloned repo.
+4. Install  `codedoc` dependencies (don't forget to `cd vc` if you haven't already):
    ```shell
    codedoc install
    ```
-4. Edit your `<gh-username>` at the `github` section of the `.codedoc/config.ts` file, replacing `visualcomputing` with your `<gh-username>`.
+5. Edit your `<gh-username>` at the `github` section of the `.codedoc/config.ts` file, replacing `visualcomputing` with your `<gh-username>`.
    ```ts | config.ts
    export const config = configuration({
      // ..
@@ -71,16 +72,22 @@ The webpage is to be developed in _markdown_ ([CommonMark](https://spec.commonma
      // ..
    });
    ```
-5. Run locally with:
+6. Run locally with:
    ```shell
    codedoc serve
    ```
    *Note:* to also [run the p5.js sketches locally](https://codedoc.cc/docs/config/output#build-files-on-git) link `dist/docs/sketches` to the `sketches` folder.
-   ```shell
-   cd dist/docs/
-   ln -s ../../docs/sketches
-   ```
-6. Deploy to github:
+   1. In Linux:
+      ```shell
+      cd dist/docs/
+      ln -s ../../docs/sketches
+      ```
+   2. In Windows (from the [cli](https://en.wikipedia.org/wiki/Command-line_interface) as administrator):
+      ```shell
+      cd dist/docs/
+      Mklink /D sketches ".\..\..\docs\sketches"
+      ```
+7. Deploy to github:
    ```shell
    git push #@see https://github.com/VisualComputing/vc/blob/main/.github/workflows/deploy-to-gh-pages.yml
    ```
