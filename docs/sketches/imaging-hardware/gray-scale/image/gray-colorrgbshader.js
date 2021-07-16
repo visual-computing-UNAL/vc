@@ -5,7 +5,10 @@ let shaderTexture;
 function preload() {
   img = loadImage('/vc/docs/sketches/lenna.png');
   video = createVideo(['/vc/docs/sketches/fingers.mov', '/vc/docs/sketches/fingers.webm']);
-  grayShader = loadShader('/vc/docs/sketches/gray_rgb.vert', '/vc/docs/sketches/gray_rgb.frag');
+  grayShader = loadShader(
+    '/vc/docs/sketches/imaging-hardware/gray-scale/image/gray_rgb.vert', 
+    '/vc/docs/sketches/imaging-hardware/gray-scale/image/gray_rgb.frag'
+    );
   video.hide();
 }
 
