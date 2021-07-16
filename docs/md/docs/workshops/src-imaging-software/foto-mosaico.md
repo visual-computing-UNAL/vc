@@ -1,6 +1,6 @@
 # Conversión de la imagen a un foto-mosaico.
 
-> [Volver](/docs/workshops/imaging)
+> [Volver](/docs/workshops/imaging-software)
 
 ## Explicacion
 

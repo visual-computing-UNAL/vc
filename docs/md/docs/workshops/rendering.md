@@ -1,7 +1,5 @@
 # Rendering
 
-> :P5 sketch=/docs/sketches/gray-colorrgbshader.js, width=512, height=256
-
 ## Propósito
 
 Realizar indagación teórica-práctica de [rendering](https://visualcomputing.github.io/Rendering).
