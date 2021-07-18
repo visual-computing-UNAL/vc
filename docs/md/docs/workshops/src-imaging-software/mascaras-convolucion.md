@@ -1,5 +1,5 @@
 # Aplicación de máscara de convolución sobre imagen y video.
-> [Volver](/docs/workshops/imaging)
+> [Volver](/docs/workshops/imaging-software)
 
 ## Descripción
 

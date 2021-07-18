@@ -1,6 +1,6 @@
 # Ejemplos filtros
 
-> [Volver](/docs/workshops/imaging)
+> [Volver](/docs/workshops/imaging-software)
 
 ## Filtros por defecto
 

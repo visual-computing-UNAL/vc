@@ -1,6 +1,6 @@
 # Conversión a escala de grises.
 
-> [Volver](/docs/workshops/imaging)
+> [Volver](/docs/workshops/imaging-software)
 
 ## Explicacion
 

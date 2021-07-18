@@ -1,6 +1,6 @@
 # Conversión de la imagen a ascii art.
 
-> [Volver](/docs/workshops/imaging)
+> [Volver](/docs/workshops/imaging-software)
 
 ## Ascii Art
 
