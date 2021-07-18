@@ -4,7 +4,6 @@ precision mediump float;
 
 uniform sampler2D tex;
 
-
 int getBit(int n, int a) {
   float value = float(n);
   for(float i = 27.0; i >= 0.0; i -= 1.0) {

@@ -1,3 +1,6 @@
+let grayShader;
+let shaderTexture;
+
 let img;
 let smaller;
 
@@ -5,13 +8,15 @@ let colors_img = [];
 let colors_avg_img = [];
 let size_avg_img = 173;
 
-let scale = 15;
+let scale_img = 8;
 let create_img = false;
 
-function preload(){
-    img = loadImage('/vc/docs/sketches/imaging/foto-mosaico/images/panda.jpg'); // Load the image
-    preloadFilesColors();
-    preloadAverageImg();
+function preload() {
+  img = loadImage('/vc/docs/sketches/imaging-hardware/foto-mosaico/lenna.jpg');
+  grayShader = loadShader('/vc/docs/sketches/imaging-hardware/foto-mosaico/gray_rgb.vert', '/vc/docs/sketches/imaging-hardware/foto-mosaico/gray_rgb.frag');
+
+  preloadFilesColors();
+  preloadAverageImg();
 }
 
 function preloadFilesColors(){
@@ -23,7 +28,10 @@ function preloadFilesColors(){
 }
 
 function setup() {
-    createCanvas(800, 500);
+    createCanvas(512, 512, WEBGL);
+    shaderTexture = createGraphics(512, 512, WEBGL);
+    shaderTexture.noStroke();
+
     if(create_img){
         createImagesAverageColor();
     }
@@ -74,20 +82,22 @@ function loadAvgImg(){
     colors_avg_img.pop();
 }
 
+
 function draw() {
     //background(0);
     print(colors_avg_img,colors_avg_img.length)
-    let reduce = 1.3;
+    let reduce = 1.0;
     // print('img width 2',img.width)
-    let w = img.width/scale/reduce;
-    let h = img.height/scale/reduce;
+    let w = img.width/scale_img/reduce;
+    let h = img.height/scale_img/reduce;
 
     smaller = createImage(w,h,RGB);
     smaller.copy(img,0,0,img.width,img.height,0,0,w,h);
 
-    // image(img, 0, 0);
+    //small image to take the pixels of that are going to be changed for an image
+    //smaller.loadPixels();
 
-    smaller.loadPixels();
+    let to_show = createImage(width,height);
     for(let i=0;i<w;i++){
         for(let j=0;j<h;j++){
             pxcol = smaller.get(i,j);
@@ -95,11 +105,23 @@ function draw() {
             //fill(pxcol);noStroke();rect(i*scale/2,j*scale/2,scale/2,scale/2);
 
             let load_closer = loadImageCloser(pxcol);
-            image(load_closer,i*scale,j*scale,scale,scale)
+            //image(load_closer,-width/2+i*scale,-height/2+j*scale,scale,scale)
+            //f.copy(img,0,0,width,height,0,0,width/2,height/2);
+            to_show.copy(load_closer,0,0,load_closer.width,load_closer.height,i*scale_img,j*scale_img,scale_img,scale_img)
+            //to_show.set(load_closer,-width/2+i*scale,-height/2+j*scale,scale,scale)
+            //to_show.set(i,j,color(0,90,102));
         }
     }
-    // smaller.updatePixels();
-    image(smaller,0,0);
+    
+    shaderTexture.shader(grayShader);
+    scale(1.0,-1.0);
+    grayShader.setUniform('u_img', to_show);
+    grayShader.setUniform('u_resolution', [float(width),float(height)]);
+
+    texture(shaderTexture);
+    shaderTexture.rect(0,0,512,512);
+    rect(-256,-256,512,512);
+
     noLoop();
     print('END')
 }
