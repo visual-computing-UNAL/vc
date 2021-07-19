@@ -75,4 +75,4 @@ for (let i = 1; i < fingers.width; i++) {
 > :P5 sketch=/docs/sketches/imaging-hardware/gray-scale/video/luma3-video.js, width=320, height=240
 
 ### Test
-> :P5 sketch=/docs/sketches/imaging-hardware/gray-scale/image/gray-colorrgbshader.js, width=512, height=256
+[comment]: <>  (> :P5 sketch=/docs/sketches/imaging-hardware/gray-scale/image/gray-colorrgbshader.js, width=512, height=256)
