@@ -146,7 +146,7 @@ Para los calculos finales se tiene que tener en cuenta que <strong>Pij = E + pij
 >
 >{\displaystyle {\vec {r_{ij}}}={\frac {{\vec {R_{ij}}}}{||{\vec {R_{ij}}}||}}={\frac {{\vec {p_{ij}}}}{||{\vec {p}}_{ij}||}}}
 
-# VI. PROGRAMMABLE GRAPHICS HARDWARE
+## VI. PROGRAMMABLE GRAPHICS HARDWARE
 
 <div style="text-align:center">
 <img src="https://i.gyazo.com/d12dd5016bf312b1423cc361e3e06b72.png"
@@ -155,7 +155,7 @@ Para los calculos finales se tiene que tener en cuenta que <strong>Pij = E + pij
      />
 </div>
 
-## El flujo actual de gráficos programables:
+### El flujo actual de gráficos programables:
 Actualmente chips como el NVIDIA GeForce3 y el ATI Radeon 8500 reemplazan el vértice de función fija y las etapas de fragmentación con las etapas programables. Estos vectores programables y motores de fragmentos ejecutan programas definidos por el usuario y permiten un buen control sobre los cálculos de shading y texturizado. Un programa de vértice Nvidia consiste de 128 y 4-way SIMD de instrucciones de punto flotante.
 El programa de vertices corre en cada vértice que entra y los resultados computados son pasados a la etapa de rasterización, la etapa de fragmentación es también programable, desde un combinador de registros Nvidia o desde un Pixel shader DirectX 8. Los pixel shaders como los programas de vértices proveen un set de instrucción 4-way SIMD para texturizados pero no operan sobre valores punto fijo como los programas de vértices. 
 
@@ -167,7 +167,7 @@ El shading programable posee algunas limitaciones:
 - Solamente un unico valor de color puede ser escrito al framebuffer en cada pasada. 
 - Los programas no pueden repetirse y no hay instrucciones de ramificación condicional. 
 
-## El flujo propuesto de gráficos programables a un término cercano:
+### El flujo propuesto de gráficos programables a un término cercano:
 Las limitantes actuales del hardware hacen difícil la tarea de implementar ray-tracing en un programa de fragmentos. Gracias al interés en shading programable para juegos, el flujo de gráficos programables ha evolucionado y circulan diferentes propuestas para la futura aproximación;
 - Arquitectura multi paso:
     Admite lecturas de texturas arbitrarias, formatos de textura de punto flotante y framebuffer, instrucciones generales de punto flotante y dos salidas de 4 vectores de punto flotante. La ramificación se implementa a través de la representación multipass.
