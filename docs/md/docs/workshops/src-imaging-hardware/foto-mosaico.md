@@ -20,14 +20,14 @@ Cuando se encuentra esta imagen se dibuja con su tamaño correspondiente en el c
 Para la obtención del color de la pieza del mosaico lo que se hizo fue hacer la imagen más pequeña, en el ejemplo que se está mostrando la imagen se hizo 8 veces más pequeña.
 
 ## Imagen original
-> :P5 sketch=/docs/sketches/imaging-hardware/foto-mosaico/foto-mosaico-original.js, width=800, height=500
+/> :P5 sketch=/docs/sketches/imaging-hardware/foto-mosaico/foto-mosaico-original.js, width=800, height=500
 
 Si tomamos cada pixel y lo rescalamos en la proporcion que se habia reducido la imagen tendremos otra imagen con el mismo tamaño, pero se veria mucho mas pixelada, estos "píxeles" son los que van a ser cambiados por imágenes de ese tamaño que contienen un color promedio cercano al color de esa imagen.
 
 ## Imagen reducida y escalado de los pixeles
 Acontinuacion se puede ver la imagen al haberla reducido, y al escalar los pixeles en la misma proporcion que se redujo la imagen original.
 
-> :P5 sketch=/docs/sketches/imaging-hardware/foto-mosaico/foto-mosaico-pixel.js, width=800, height=500
+/> :P5 sketch=/docs/sketches/imaging-hardware/foto-mosaico/foto-mosaico-pixel.js, width=800, height=500
 
 Estos pixeles son los que van a ser remplazados por imagenes que tengan un color promedio cercano al de el pixel al que corresponden.
 
@@ -45,10 +45,10 @@ Haciendo uso de esta fórmula encontramos la imagen que tiene el color más cerc
 
 ## Imagen final del mosaico 
 
-> :P5 sketch=/docs/sketches/imaging-hardware/foto-mosaico/foto-mosaico.js, width=800, height=500
+/> :P5 sketch=/docs/sketches/imaging-hardware/foto-mosaico/foto-mosaico.js, width=800, height=500
 
 ## Imagen final del mosaico con un tamaño de pieza mas grande
-> :P5 sketch=/docs/sketches/imaging-hardware/foto-mosaico/foto-mosaico-bigpix.js, width=800, height=500
+/> :P5 sketch=/docs/sketches/imaging-hardware/foto-mosaico/foto-mosaico-bigpix.js, width=800, height=500
 
 ## Imagen final del mosaico flamenco
-> :P5 sketch=/docs/sketches/imaging-hardware/foto-mosaico/foto-mosaico-falmenco.js, width=800, height=800
+> :P5 sketch=/docs/sketches/imaging-hardware/foto-mosaico/gray-colorrgbshader.js, width=512, height=512
