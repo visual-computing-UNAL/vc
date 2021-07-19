@@ -319,6 +319,31 @@ El trazado de rayos funciona casi de la misma manera, excepto que todo generalme
      />
 </div>
 
-## X. REFERENCIAS
+## X. ARTÍCULOS CIENTÍFICOS
 
+### Ray Tracing with Rope Trees
+
+#### Autores
+
+#### Abstract
+
+#### Contenido
+
+### Fast Robust Bsp Tree Traversal Algorithm For Ray Tracing
+
+#### Autores
+
+#### Abstract
+
+#### Contenido
+
+## XI. RAY TRACING EN GPU
+
+## XII. REFERENCIAS
+
+
+> [10-1](/docs/workshops/rendering/10-1)
+> [10-2](/docs/workshops/rendering/10-2)
+> [11-1](/docs/workshops/rendering/11-1)
+> [11-2](/docs/workshops/rendering/11-2)
 
