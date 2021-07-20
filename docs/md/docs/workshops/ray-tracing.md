@@ -321,7 +321,39 @@ El trazado de rayos funciona casi de la misma manera, excepto que todo generalme
 
 ## X. ARTÍCULOS CIENTÍFICOS
 
-### Ray Tracing with Rope Trees
+## Ray Tracing on GPU
+
+### Creando la cuadrícula uniforme
+Un enfoque bastante sencillo puede ser utilizado para crear la rejilla uniforme, para todos los triángulos Ti en la escena:
+Se calculan las celdas límites (b1,b2) del triángulo Ti
+Se prueba la intersección triángulo-caja Ti con cada celda Cj que pertenece a (b1,b2)
+Si la intersección triángulo-box retorna verdadero, se añade una referencia de Ti a Cj.
+
+<div style="text-align:center">
+<img src="https://i.gyazo.com/e9c7ec0f5757702441a3efd83a14e8db.png"
+     alt="Markdown Monster icon"
+     style="width: 100hv;margin-bottom: 1s0px"
+     />
+     <img src="https://i.gyazo.com/9332a442b0efd435655fb21bafc9d218.png"
+     alt="Markdown Monster icon"
+     style="width: 100hv;margin-bottom: 1s0px"
+     />
+</div>
+
+
+Aunque la grilla es creada usualmente en la GPU y almacenada en texturas esta puede ser recorrida utilizando la GPU.
+
+### Atravesando la cuadrícula uniforme
+Jhon Amanatides y Andrew Woo presentaron una manera de recorrer la cuadrícula rápidamente haciendo uso del algoritmo 3D-DDA(Diferencia digital). Con unas pequeñas modificaciones, este algoritmo puede ser mapeado a la GPU.
+<div style="text-align:center">
+<img src="https://i.gyazo.com/c5f20fc2761619b96a3f7f673f56af6b.png"
+     alt="Markdown Monster icon"
+     style="width: 100hv;margin-bottom: 1s0px"
+     />
+</div>
+
+Este algoritmo consiste de dos pasos: inicialización y recorrido incremental.
+
 
 #### Autores
 
