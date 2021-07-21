@@ -319,9 +319,8 @@ El trazado de rayos funciona casi de la misma manera, excepto que todo generalme
      />
 </div>
 
-## X. ARTÍCULOS CIENTÍFICOS
 
-## Ray Tracing on GPU
+## Ray Tracing en GPU
 
 ### Creando la cuadrícula uniforme
 Un enfoque bastante sencillo puede ser utilizado para crear la rejilla uniforme, para todos los triángulos Ti en la escena:
@@ -355,6 +354,9 @@ Jhon Amanatides y Andrew Woo presentaron una manera de recorrer la cuadrícula r
 Este algoritmo consiste de dos pasos: inicialización y recorrido incremental.
 
 
+
+## X. ARTÍCULOS CIENTÍFICOS
+
 #### Autores
 
 #### Abstract
@@ -374,8 +376,13 @@ Este algoritmo consiste de dos pasos: inicialización y recorrido incremental.
 ## XII. REFERENCIAS
 
 
-> [10-1](/docs/workshops/rendering/10-1)
-> [10-2](/docs/workshops/rendering/10-2)
+> [10-1] Pablo Lopez. (2020). Ray tracing: ¿Qué es y para qué sirve?
+
+> [10-2] Martin Christen,(2005). Ray tracing on GPU. url:https://www.geeknetic.es/Ray-Tracing/que-es-y-para-que-sirve.
+
+> [10-3] Timothy J. Purcell, Ian Buck, William R. Mark, Pat Hanrahan.(2002). Ray Tracing on Programmable Graphics Hardware.
+
 > [11-1](/docs/workshops/rendering/11-1)
+
 > [11-2](/docs/workshops/rendering/11-2)
 
