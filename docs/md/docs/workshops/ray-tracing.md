@@ -1,8 +1,6 @@
 # Ray Tracing
 
-## I. RESUMEN
-
-## II. INTRODUCCIÓN
+## I. INTRODUCCIÓN
 
 El ray tracing es una técnica de renderizado para generar un imagen a través del  rastreo de un camino de luz como píxeles en un plano de imagen y simulando los efectos de sus encuentros con objetos virtuales, esta técnica es capaz de producir un alto grado de realismo visual, mayor que los métodos de renderización de línea de exploración, pero a cambio de un gran costo computacional. Por esta razón el raytracing generalmente se ha utilizado para aplicaciones donde se puede tomar mucho tiempo para renderizar, como por ejemplo imágenes generadas por computadora, efectos visuales (VFX) de peliculas y television, pero se suele utilizar muy poco en aplicaciones de ejecución en tiempo real como pueden ser  los videojuegos, donde la velocidad de renderización de cada frame es importante.
 
@@ -20,7 +18,7 @@ Vale la pena mencionar que en los últimos años, la aceleración por hardware p
      />
 </div>
 
-## III. HISTORIA
+## II. HISTORIA
 
 La idea del Ray Tracing se remonta al siglo XVI cuando fue descrito por Alberto Durero, a quien se le atribuye su invención. En “Four Books on Measurement”, describió un aparato llamado puerta de Durero que usa un hilo sujeto al extremo de un lápiz que un asistente mueve a lo largo de los contornos del objeto a dibujar. El hilo pasa a través del marco de la puerta y luego a través de un gancho en la pared. El hilo forma un rayo y el gancho actúa como el centro de proyección y corresponde a la posición de la cámara en el trazado de rayos.  
 
@@ -39,7 +37,7 @@ En 1976, Scott Roth creó una animación de libro animado en el curso de gráfic
 
 > :P5 sketch=/docs/sketches/ray-tracing/gif.js, width=640, height=470
 
-## IV. DESCRIPCIÓN DETALLADA DEL ALGORITMO DEL RAY TRACING
+## III. DESCRIPCIÓN DETALLADA DEL ALGORITMO DEL RAY TRACING
 
 ### Versión simplificada de lo que pasa en la naturaleza
 En la naturaleza, la luz emite un rayo de luz el cual viaja eventualmente a una superficie que interrumpe su progreso. Uno puede pensar en ese rayo como un flujo de protones viajando a lo largo del mismo camino. En un vacío perfecto este rayo sería una línea recta, a este rayo le pueden suceder cuatro cosas: absorción, reflexión, refracción y fluorescencia. Una superficie puede absorber parte del rayo de luz, resultando en una pérdida de intensidad de la luz reflejada o refractada. Este puede también reflejar toda o parte del rayo de luz, en una o más direcciones. Si la superficie tiene transparente o translúcida, puede refractarse una porción de luz en sí mismo en una dirección diferente mientras absorbe una parte (o toda) del espectro,provocando probablemente una alteración en el color.
@@ -71,7 +69,7 @@ Los primeros algoritmos trazaban rayos desde el a través de la escena hasta que
      />
 </div>
 
-## V. MATEMÁTICA APLICADA
+## IV. MATEMÁTICA APLICADA
 
 El trazado de rayos ópticos (Ray tracing) describe un método para producir imágenes visuales construidas en entornos de gráficos por computadora en 3D, con más fotorrealismo que las técnicas de proyección de rayos o de reproducción de líneas de exploración. Funciona trazando un camino desde un ojo imaginario a través de cada píxel en una pantalla virtual y calculando el color del objeto visible a través de él.
 
@@ -146,34 +144,191 @@ Para los calculos finales se tiene que tener en cuenta que <strong>Pij = E + pij
 >
 >{\displaystyle {\vec {r_{ij}}}={\frac {{\vec {R_{ij}}}}{||{\vec {R_{ij}}}||}}={\frac {{\vec {p_{ij}}}}{||{\vec {p}}_{ij}||}}}
 
-## VI. PROGRAMMABLE GRAPHICS HARDWARE
+## V. Formas de  optimizar el RAY TRACING
+
+En esta sección se van a hablar brevemente de dos algoritmos descritos en artículos científicos para poder optimizar el rendimiento del raytracing.
+
+### 1 - Ray Tracing with Rope Trees
+
+#### Autores
+Vlastimil Havran, Jirí Bittner, Jirí Zára 
+
+#### Abstract
+In this paper an acceleration method for finding the nearest ray–object intersection for ray tracing
+purposes is presented. We use the concept of BSP trees enriched by rope trees. These are used to
+accelerate the traversal of the BSP tree. We give a comparison of experimental results between the
+technique based on BSP tree and uniform spatial subdivision
+
+#### Introducción
+El Ray Tracing es una técnica de renderización bien conocida para producir imágenes realistas que simulan bien los espectros
+superficies. El principal inconveniente de este algoritmo es su complejidad computacional bastante grande, que no permite
+su uso interactivo. El problema se ha centrado en una gran cantidad de interés de investigación en el pasado que ha llevado a
+algunas técnicas prácticas para acelerar el algoritmo básico.
+
+El enfoque presentado en este documento se centra en mejorar la complejidad de casos promedio de la proyección de rayos.
+En particular, es adecuado para escenas que contienen una gran cantidad de objetos. Explota la idea de espacio
+subdivisión, que sirve para determinar una parte de la escena atravesada por un rayo de manera eficiente.
+
+#### Subdivisión espacial uniforme
+Una subdivisión espacial uniforme (a menudo denominada cuadrícula) es uno de los primeros métodos desarrollados para la subdivisión espacial. Implica la subdivisión del espacio de la escena en celdas elementales de igual tamaño, independientemente de la
+distribución de objetos en la escena. La cuadrícula tridimensional se asemeja a la subdivisión de una cuadrícula bidimensional.
+pantalla en píxeles. A cada celda se le asigna una lista de objetos que la cruzan.
 
 <div style="text-align:center">
-<img src="https://i.gyazo.com/d12dd5016bf312b1423cc361e3e06b72.png"
+<img src="https://i.gyazo.com/c0683367072d17c9b6f4e4fa7cf0841b.png"
      alt="Markdown Monster icon"
-     style="width: 200px;margin-bottom: 20px"
+     style="width: 100hv;margin-bottom: 1s0px"
      />
 </div>
 
-### El flujo actual de gráficos programables:
-Actualmente chips como el NVIDIA GeForce3 y el ATI Radeon 8500 reemplazan el vértice de función fija y las etapas de fragmentación con las etapas programables. Estos vectores programables y motores de fragmentos ejecutan programas definidos por el usuario y permiten un buen control sobre los cálculos de shading y texturizado. Un programa de vértice Nvidia consiste de 128 y 4-way SIMD de instrucciones de punto flotante.
-El programa de vertices corre en cada vértice que entra y los resultados computados son pasados a la etapa de rasterización, la etapa de fragmentación es también programable, desde un combinador de registros Nvidia o desde un Pixel shader DirectX 8. Los pixel shaders como los programas de vértices proveen un set de instrucción 4-way SIMD para texturizados pero no operan sobre valores punto fijo como los programas de vértices. 
+#### Árbol de partición de espacio binario
+Un árbol de partición de espacio binario (BSP) es análogo al árbol de búsqueda binaria. El árbol BSP representa una escena que contiene un conjunto de objetos jerárquicamente. El BSP se forma subdividiendo recursivamente el espacio de la escena en dos partes. Cada nodo interior contiene un plano de división. Todos los nodos del árbol BSP corresponden a células poliédricas convexas. En cada hoja del árbol BSP se almacena una lista de objetos que se cruzan con la celda correspondiente.
 
-El shading programable posee algunas limitaciones:
-- Programas de vértices y fragmentos poseen sets de instrucciones simples e incompletas. 
-- Los tipos de datos de programas de fragmentos son mayoritariamente puntos fijos, las texturas de entradas y tienen como salida colores framebuffers de 8-bits típicamente por cada color de componente. Los valores intermedios en registros tienen valores levemente más precisos. 	
-- Hay muchas limitaciones en términos de recursos, los programas poseen un límite de instrucciones y un pequeño número de registros. Cada etapa tiene un número limitado de entradas y salidas.
-- El número de texturas activas y dependientes es limitado. El hardware actual permite ciertas instrucciones para la computación de ciertas direcciones de texturas solo dentro de ciertos puntos del programa.
-- Solamente un unico valor de color puede ser escrito al framebuffer en cada pasada. 
-- Los programas no pueden repetirse y no hay instrucciones de ramificación condicional. 
+<div style="text-align:center">
+<img src="https://i.gyazo.com/11184129252da8d4e12db574d89268d0.png"
+     alt="Markdown Monster icon"
+     style="width: 100hv;margin-bottom: 1s0px"
+     />
+</div>
 
-### El flujo propuesto de gráficos programables a un término cercano:
-Las limitantes actuales del hardware hacen difícil la tarea de implementar ray-tracing en un programa de fragmentos. Gracias al interés en shading programable para juegos, el flujo de gráficos programables ha evolucionado y circulan diferentes propuestas para la futura aproximación;
-- Arquitectura multi paso:
-    Admite lecturas de texturas arbitrarias, formatos de textura de punto flotante y framebuffer, instrucciones generales de punto flotante y dos salidas de 4 vectores de punto flotante. La ramificación se implementa a través de la representación multipass.
-- Arquitectura de ramificación.
-    Arquitectura multipass mejorada para incluir soporte para instrucciones de bifurcación condicional para bucles y flujo de control.
 
+#### Optimización estadística de un árbol BSP
+El tiempo necesario para la construcción de un árbol BSP suele ser insignificante en comparación con el cálculo
+tiempo dedicado a atravesar el árbol para determinar las intersecciones entre el rayo y el objeto. Por tanto, es ventajoso dedicar un
+mayor esfuerzo para crear un árbol eficiente, bajo el supuesto de que el tiempo extra se recuperaría
+durante el recorrido.
+
+<div style="text-align:center">
+<img src="https://i.gyazo.com/22a4974bf86ac1fc675d7ac59ae3a487.png"
+     alt="Markdown Monster icon"
+     style="width: 100hv;margin-bottom: 1s0px"
+     />
+</div>
+
+#### Cuerdas
+Cada hoja en el árbol BSP corresponde a la hoja-celda alineada con el eje. Cada una de estas hoja-celdas tiene seis caras. Las caras de una celda de hoja se llamarán hoja-cara. Las celdas que cruzan la cara de una hoja se denominan celdas vecinas.
+
+#### Algoritmo de construcción de cuerdas
+La construcción de cuerdas es sencilla. Para cada hoja-celda del árbol BSP se coloca una cuerda. Para una hoja-cara determinada, la jerarquía se busca comenzando desde el nodo raíz. En cada paso, la búsqueda continúa en el subárbol, que corresponde a una cara que se cruza con la celda. Si la cara está dividida por el plano referido en el nodo alcanzado actualmente (es decir, interseca ambos subárboles), la búsqueda finaliza.
+
+####  Árboles de cuerda
+Las cuerdas se utilizan para localizar una hoja vecina para un rayo que sale de la hoja actual durante el algoritmo de recorrido del rayo. Las cuerdas apuntan a hojas o nodos interiores del árbol BSP.
+
+<div style="text-align:center">
+<img src="https://i.gyazo.com/9975c8010707d57068e8cf22022a6129.png"
+     alt="Markdown Monster icon"
+     style="width: 100hv;margin-bottom: 1s0px"
+     />
+</div>
+
+#### Análisis de algoritmos
+La técnica de los árboles de cuerda requiere una memoria adicional para almacenar los árboles de cuerda, pero por otro lado, elimina los largos pasos transversales (a menudo llamados verticales) desde la raíz hacia abajo. La eliminación de los pasos transversales es especialmente notable para los rayos secundarios y de sombra porque sabemos exactamente en qué hoja-célula se encuentra el origen del rayo.
+
+### 2 -Fast Robust BSP Tree  Traversal Algorithm For Ray Tracing
+
+#### Autores
+Vlastimil Havran, Tomás Kopal, Jirí Bittner, Jirí Zára 
+
+#### Abstract 
+Un árbol de BSP (Partición binaria del espacio) ortogonal es una estructura de datos de subdivisión espacial comúnmente usada para la aceleración de ray tracing, su construcción toma relativamente poco tiempo y la eficacia de su recorrido influencia significativamente el resultado del tiempo de renderizado. En este artículo se propone un nuevo algoritmo de recorrido rápido basado en la evaluación estadística de todos los casos posibles que ocurren durante al recorrer un árbol BSP. 
+
+El algoritmo propuesto manipula todas las singularidades correctamente y ahorra desde un 30% hasta un 50% del tiempo de recorrido en comparación con los algoritmos Sung y Arvo. 
+
+#### Introducción
+Las técnicas de subdivisión espacial son métodos bien conocidos para acelerar los cálculos de ray tracing, hay una variedad de esquemas para la subdivisión espacial incluyendo los uniformes como grillas y los no uniformes como árboles BSP, y oc. La complejidad del tiempo de ray tracing es determinada por el casteo de una gran cantidad de rayos. 
+
+El principio de todas las técnicas de subdivisión espacial, es la reducción las computaciones de intersecciones rayo-objeto mediante particionamiento del espacio de la escena en celdas disjuntas y la prueba de intersección rayo-objeto es computada por las celdas sobre el camino del rayo. 
+Debe notarse que a pesar que el número de pruebas de intersección disminuye significativamente, hay requerimientos adicionales para el recorrido de la estructura de datos por subdivisión espacial. Una manera para reducir el tiempo total, es mejorar la estructura de datos espacial y la segunda manera es mejorar el algoritmo de recorrido, lo cual es la aproximación del artículo. 
+
+Un árbol de partición binaria del espacio es una estructura de datos simple y poderosa que puede ser usada para resolver una variedad de problemas geométricos, para el caso de ray-tracing se construye dividiendo planos de manera perpendicular a los principales ejes. Lo anterior representa una ventaja cuando los objetos con formas complejas que están encerrados son renderizados, con la ortogonalidad del árbol BSP se disminuye el número de cálculos requeridos por una intersección de un rayo y un plano de división. 
+
+#### Clasificación Transversal
+
+Cuando un objeto es traspasado por un rayo durante el proceso de renderizado, un árbol BSP se atraviesa desde la raíz hasta las hojas. Las secuencias corregidas de hojas, tienen que ser identificadas para el origen de un rayo y dirección, la hoja más cercana tiene que ser procesada primero, el plano dividido subdivide una celda rectangular en dos más pequeñas, el test realizado durante el recorrido debe determinar si visitar ambos nodos y en qué orden o si debe visitar sólo uno y cuál.
+
+<div style="text-align:center">
+<img src="https://i.gyazo.com/9bd87a654c4c938050badd5942a292cc.png"
+     alt="Markdown Monster icon"
+     style="width: 400px;margin-bottom: 20px"
+     />
+</div>
+
+En la figura se muestran todos los casos clasificados por el origen y dirección del rayo con respecto al plano dividido, como el plano dividido está orientado, podemos distinguir ubicaciones negativas del punto de origen (la parte de abajo del plano) y la positiva (la parte de arriba del plano divisor), los casos descritos anteriormente son denominados como N y P respectivamente. Los casos Z muestran cuando la situación es que el origen del rayo está embebido dentro del plano divisor. Puntos geométricos importantes del esquema de clasificación son caracterizados por la distancia clasificada, medida desde el origen del rayo sobre la dirección de este. El rayo al entrar el nodo en el punto de entrada es denotado con la clasificación a y sale por el punto marcado como b por lo que a<=b, la distancia marcada desde el origen del rayo hacia el plano divisor es denotada como s. La clasificación incluye todas las relaciones entre las variables señaladas. 
+
+#### Propuesta algoritmo 
+Para resolver los casos señalados en la figura se propuso un nuevo algoritmo para realizar el recorrido, este compara coordenadas en lugar de distancias debido a la propiedad del arbol de ser ortogonal 
+
+<div style="text-align:center">
+<img src="https://i.gyazo.com/47fc74ed97ebfaf903568c7ed9a148e0.png"
+     alt="Markdown Monster icon"
+     style="width: 400px;margin-bottom: 20px"
+     />
+</div>
+
+En la figura suponemos que el plano divisor es perpendicular al eje x, por lo cual las coordenadas x de los puntos s, a y b son suficientes para distinguir todos los otros casos señalados en la figura anterior. 
+
+Este algoritmo necesita exactamente dos comparaciones para encontrar el caso del recorrido, las coordenadas x, y o z son seleccionados de acuerdo a la orientación del plano divisor dado. Cuando los nodos son golpeados por el rayo, la ubicación de s es procesada, que es la parte computacionalmente más costosa pero estas son luego reutilizadas y no es necesario un recálculo. 
+
+#### Resultados
+<div style="text-align:center">
+<img src="https://i.gyazo.com/585c1a1270f10083b1599a374e8a1181.png"
+     alt="Markdown Monster icon"
+     style="width: 400px;margin-bottom: 20px"
+     />
+</div>
+El algoritmo propuesto es denotado como TA-B puede verse que requiere de un menor costo computacional y los resultados conforme al ray tracing son de alrededor de dos veces más rápido.
+
+## VI. Ray Tracing en GPU
+
+### Creando la cuadrícula uniforme
+Un enfoque bastante sencillo puede ser utilizado para crear la rejilla uniforme, para todos los triángulos Ti en la escena:
+Se calculan las celdas límites (b1,b2) del triángulo Ti
+Se prueba la intersección triángulo-caja Ti con cada celda Cj que pertenece a (b1,b2)
+Si la intersección triángulo-box retorna verdadero, se añade una referencia de Ti a Cj.
+
+<div style="text-align:center">
+<img src="https://i.gyazo.com/e9c7ec0f5757702441a3efd83a14e8db.png"
+     alt="Markdown Monster icon"
+     style="height: 300px;margin-bottom: 1s0px"
+     />
+     <img src="https://i.gyazo.com/9332a442b0efd435655fb21bafc9d218.png"
+     alt="Markdown Monster icon"
+     style="height: 300px;margin-bottom: 1s0px"
+     />
+</div>
+
+Aunque la grilla es creada usualmente en la GPU y almacenada en texturas esta puede ser recorrida utilizando la GPU.
+
+### Atravesando la cuadrícula uniforme
+Jhon Amanatides y Andrew Woo presentaron una manera de recorrer la cuadrícula rápidamente haciendo uso del algoritmo 3D-DDA(Diferencia digital). Con unas pequeñas modificaciones, este algoritmo puede ser mapeado a la GPU.
+
+Este algoritmo consiste de dos pasos: inicialización y recorrido incremental.
+
+<div style="text-align:center">
+<img src="https://i.gyazo.com/c5f20fc2761619b96a3f7f673f56af6b.png"
+     alt="Markdown Monster icon"
+     style="width: 80hv;margin-bottom: 1s0px"
+     />
+</div>
+
+### Removiendo la recursión
+
+La ecuación para calcular el color en la iteración i se puede obtener simplemente eliminando la recursividad: calcule el color para 1 rayo, luego para 2 rayos, luego para 3 rayos y así sucesivamente, y luego pruebe el resultado con inducción completa. Sería posible agregar soporte a los rayos transmisivos de una manera similar a la reflexión. El problema es que para cada rayo transmisivo, también podría haber un rayo reflectante. Un enfoque simple sería agregar una nueva textura de rayo para cada objeto transmisivo en la escena: cada rayo seguiría un camino diferente, lo que significa agregar una nueva textura por objeto. Pero esto consumiría mucha memoria y requeriría demasiadas pasadas adicionales. Para simplificar el RayTracer basado en GPU, no se utilizan rayos transmisivos.
+
+### Almacenamiento de la escena 3D
+
+Toda la escena, almacenada en una estructura de cuadrícula uniforme, debe mapearse en la memoria de textura. Cada celda de la estructura del índice Voxel contiene un puntero a una lista de elementos. La lista de elementos apunta a los datos reales del elemento, los triángulos. El trazador de rayos solo debería usar triángulos como datos de elementos, pero aquí sería posible admitir otras formas como esferas perfectas, por ejemplo, un juego de trazado de rayos en tiempo real que usa muchas esferas, pero por ahora, solo se usan triángulos.
+
+### Bucle de cruce e intersección de equilibrio de carga
+
+Un problema importante es que tanto el núcleo del intersector como el del traverser requieren bucles y ambos dependen el uno del otro. La forma más fácil sería hacer un bucle en el traverser hasta que ningún rayo esté en estado "activo", luego hacer un bucle en el núcleo del intersector hasta que ningún rayo esté en estado de "espera". Esto es muy ineficiente, porque el número de llamadas al kernel tiene que ser mínimo para evitar que las operaciones de selección-z dominen los cálculos. El intersector de rayos solo debe llamarse si hay suficientes rayos en estado de "espera" y listos para la intersección. Y el rayo traverser solo debe llamarse si hay suficientes rayos listos para atravesarlo. Los experimentos muestran que realizar intersecciones una vez que el 20% de los rayos requiere intersección produce el número mínimo de llamadas al núcleo.
+
+<div style="text-align:center">
+<img src="https://i.gyazo.com/59578fb65d0a61e6deddcb35090e4b39.png"
+     alt="Markdown Monster icon"
+     style="width: 100hv;margin-bottom: 1s0px"
+     />
+</div>
 
 ## VII. Kernel de Shading 
 
@@ -206,7 +361,35 @@ luces en una escena, correspondientes al número de rayos de sombra que se van a
 elige aleatoriamente un rebote de rayo para seguir y la ruta de retroalimentación tiene solo un rayo de ancho.
 
 
-## VIII. POSIBLE IMPLEMENTACIÓN
+## VIII. PROGRAMMABLE GRAPHICS HARDWARE
+
+<div style="text-align:center">
+<img src="https://i.gyazo.com/d12dd5016bf312b1423cc361e3e06b72.png"
+     alt="Markdown Monster icon"
+     style="width: 200px;margin-bottom: 20px"
+     />
+</div>
+
+### El flujo actual de gráficos programables:
+Actualmente chips como el NVIDIA GeForce3 y el ATI Radeon 8500 reemplazan el vértice de función fija y las etapas de fragmentación con las etapas programables. Estos vectores programables y motores de fragmentos ejecutan programas definidos por el usuario y permiten un buen control sobre los cálculos de shading y texturizado. Un programa de vértice Nvidia consiste de 128 y 4-way SIMD de instrucciones de punto flotante.
+El programa de vertices corre en cada vértice que entra y los resultados computados son pasados a la etapa de rasterización, la etapa de fragmentación es también programable, desde un combinador de registros Nvidia o desde un Pixel shader DirectX 8. Los pixel shaders como los programas de vértices proveen un set de instrucción 4-way SIMD para texturizados pero no operan sobre valores punto fijo como los programas de vértices. 
+
+El shading programable posee algunas limitaciones:
+- Programas de vértices y fragmentos poseen sets de instrucciones simples e incompletas. 
+- Los tipos de datos de programas de fragmentos son mayoritariamente puntos fijos, las texturas de entradas y tienen como salida colores framebuffers de 8-bits típicamente por cada color de componente. Los valores intermedios en registros tienen valores levemente más precisos. 	
+- Hay muchas limitaciones en términos de recursos, los programas poseen un límite de instrucciones y un pequeño número de registros. Cada etapa tiene un número limitado de entradas y salidas.
+- El número de texturas activas y dependientes es limitado. El hardware actual permite ciertas instrucciones para la computación de ciertas direcciones de texturas solo dentro de ciertos puntos del programa.
+- Solamente un unico valor de color puede ser escrito al framebuffer en cada pasada. 
+- Los programas no pueden repetirse y no hay instrucciones de ramificación condicional. 
+
+### El flujo propuesto de gráficos programables a un término cercano:
+Las limitantes actuales del hardware hacen difícil la tarea de implementar ray-tracing en un programa de fragmentos. Gracias al interés en shading programable para juegos, el flujo de gráficos programables ha evolucionado y circulan diferentes propuestas para la futura aproximación;
+- Arquitectura multi paso:
+    Admite lecturas de texturas arbitrarias, formatos de textura de punto flotante y framebuffer, instrucciones generales de punto flotante y dos salidas de 4 vectores de punto flotante. La ramificación se implementa a través de la representación multipass.
+- Arquitectura de ramificación.
+    Arquitectura multipass mejorada para incluir soporte para instrucciones de bifurcación condicional para bucles y flujo de control.
+
+## IX. POSIBLE IMPLEMENTACIÓN
 
 Una imagen rasterizada está hecha de píxeles. Una forma de producir una imagen de una escena 3D es "deslizar" de alguna manera esta imagen ráster a lo largo del plano de la imagen de nuestra cámara virtual y disparar rayos a través de cada píxel de la imagen, para encontrar qué parte de la escena cubre cada píxel. La forma en que lo hacemos es simplemente proyectando un rayo que se origina en la posición de la cámara y pasa por el centro de cada píxel. Luego encontramos con que objetos de la escena se cruzan los rayos. Si un pixel "ve" algo, seguramente ve el objeto que está justo frente a él en la dirección señalada por ese rayo. La dirección del rayo, como acabamos de mencionar, se puede construir simplemente trazando una línea desde el origen de la cámara hasta el centro del píxel y luego extendiendo esa línea en la escena.
 
@@ -228,7 +411,7 @@ En resumen, el uso del trazado de rayos para calcular imágenes fotorrealistas d
 * **Intersección Ray-Geometría:** prueba si un rayo se cruza con alguno de los objetos en la escena (esto requiere hacer un bucle sobre todos los objetos para cada rayo emitido).
 * **Sombreado:** averigua cómo se ve el punto de intersección entre el rayo y el objeto (si se ha producido una intersección).
 
-## IX. APLICACIONES EN LA VIDA REAL
+## X. APLICACIONES EN LA VIDA REAL
 
 El ray tracing produce resultados bastante vistosos pero cuya utilidad práctica no es del todo obvia. A continuación hablaremos de algunas de las aplicaciones prácticas del mismo:
 
@@ -319,70 +502,20 @@ El trazado de rayos funciona casi de la misma manera, excepto que todo generalme
      />
 </div>
 
-
-## Ray Tracing en GPU
-
-### Creando la cuadrícula uniforme
-Un enfoque bastante sencillo puede ser utilizado para crear la rejilla uniforme, para todos los triángulos Ti en la escena:
-Se calculan las celdas límites (b1,b2) del triángulo Ti
-Se prueba la intersección triángulo-caja Ti con cada celda Cj que pertenece a (b1,b2)
-Si la intersección triángulo-box retorna verdadero, se añade una referencia de Ti a Cj.
-
-<div style="text-align:center">
-<img src="https://i.gyazo.com/e9c7ec0f5757702441a3efd83a14e8db.png"
-     alt="Markdown Monster icon"
-     style="width: 100hv;margin-bottom: 1s0px"
-     />
-     <img src="https://i.gyazo.com/9332a442b0efd435655fb21bafc9d218.png"
-     alt="Markdown Monster icon"
-     style="width: 100hv;margin-bottom: 1s0px"
-     />
-</div>
-
-
-Aunque la grilla es creada usualmente en la GPU y almacenada en texturas esta puede ser recorrida utilizando la GPU.
-
-### Atravesando la cuadrícula uniforme
-Jhon Amanatides y Andrew Woo presentaron una manera de recorrer la cuadrícula rápidamente haciendo uso del algoritmo 3D-DDA(Diferencia digital). Con unas pequeñas modificaciones, este algoritmo puede ser mapeado a la GPU.
-<div style="text-align:center">
-<img src="https://i.gyazo.com/c5f20fc2761619b96a3f7f673f56af6b.png"
-     alt="Markdown Monster icon"
-     style="width: 100hv;margin-bottom: 1s0px"
-     />
-</div>
-
-Este algoritmo consiste de dos pasos: inicialización y recorrido incremental.
-
-
-
-## X. ARTÍCULOS CIENTÍFICOS
-
-#### Autores
-
-#### Abstract
-
-#### Contenido
-
-### Fast Robust Bsp Tree Traversal Algorithm For Ray Tracing
-
-#### Autores
-
-#### Abstract
-
-#### Contenido
-
-## XI. RAY TRACING EN GPU
-
 ## XII. REFERENCIAS
 
+> Martin Christen,(2005). Ray tracing on GPU. url:https://www.geeknetic.es/Ray-Tracing/que-es-y-para-que-sirve.
 
-> [10-1] Pablo Lopez. (2020). Ray tracing: ¿Qué es y para qué sirve?
+> Timothy J. Purcell, Ian Buck, William R. Mark, Pat Hanrahan.(2002). Ray Tracing on Programmable Graphics Hardware.
 
-> [10-2] Martin Christen,(2005). Ray tracing on GPU. url:https://www.geeknetic.es/Ray-Tracing/que-es-y-para-que-sirve.
+> Scratchapixel. An Overview of the Ray-Tracing Rendering Technique. Referido de: https://www.scratchapixel.com/lessons/3d-basic-rendering/ray-tracing-overview
 
-> [10-3] Timothy J. Purcell, Ian Buck, William R. Mark, Pat Hanrahan.(2002). Ray Tracing on Programmable Graphics Hardware.
+> ArchDaily. (23 Jul 2020). Real-Time Ray-Tracing is Changing Architectural Visualization. Referido de: https://www.archdaily.com/943676/real-time-ray-tracing-is-changing-architectural-visualization
 
-> [11-1](/docs/workshops/rendering/11-1)
+> Akrich Corradini, Gaston. (2020-10-19). Ray tracing: realidad virtual y su aplicación en la arquitectura. Referido de: https://upcommons.upc.edu/handle/2117/341552
 
-> [11-2](/docs/workshops/rendering/11-2)
+> Vlastimil, H., Bittner J., Zára J. (1998) Ray Tracing with Rope Trees. Referido de: https://www.researchgate.net/publication/2691301_Ray_Tracing_with_Rope_Trees
 
+> Vlastimil, H., Kopal, T., Bittner J., Zára J. (1998) Fast Robust BSP Tree  Traversal Algorithm For Ray Tracing.  Referido de: https://researchgate.net/publication/242938069_Fast_Robust_Bsp_Tree_Traversal_Algorithm_For_Ray_Tracing
+
+> Purcell, T., Buck, I., Mark, W., Hanrahan, P. (2002) Ray tracing on programmable graphics hardware. Referido de: https://graphics.stanford.edu/papers/rtongfx/rtongfx.pdfZ
