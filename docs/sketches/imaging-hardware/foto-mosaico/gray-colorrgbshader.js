@@ -4,17 +4,22 @@ let shaderTexture;
 let img;
 let smaller;
 
+let images;
+
 let colors_img = [];
 let colors_avg_img = [];
+let colors_avg_img2 = [];
 let size_avg_img = 173;
 
-let scale_img = 8;
+let scale_img = 15;
 let create_img = false;
+
+let create_new_img = false;
 
 function preload() {
   img = loadImage('/vc/docs/sketches/imaging-hardware/foto-mosaico/lenna.jpg');
+  images = loadImage('/vc/docs/sketches/imaging-hardware/foto-mosaico/images.png')
   grayShader = loadShader('/vc/docs/sketches/imaging-hardware/foto-mosaico/gray_rgb.vert', '/vc/docs/sketches/imaging-hardware/foto-mosaico/gray_rgb.frag');
-
   preloadFilesColors();
   preloadAverageImg();
 }
@@ -32,11 +37,33 @@ function setup() {
     shaderTexture = createGraphics(512, 512, WEBGL);
     shaderTexture.noStroke();
 
+    if(create_new_img){
+        create_long_img();
+    }
+
     if(create_img){
         createImagesAverageColor();
     }
     loadAvgImg();
     noLoop();
+    create_colors_avg_img2();
+}
+
+function create_colors_avg_img2(){
+    for(let curr of colors_avg_img){
+        for(const temp of curr){
+            colors_avg_img2.push(float(temp-0));
+        }
+    }
+}
+
+function create_long_img(){
+    let to_show = createImage(scale_img*colors_img.length,scale_img);
+    for(let i=0;i<colors_img.length;i++){
+            let load_closer = colors_img[i];
+            to_show.copy(load_closer,0,0,load_closer.width,load_closer.height,i*scale_img,0,scale_img,scale_img);
+    }
+    to_show.save('images','png')
 }
 
 function createImagesAverageColor(){
@@ -82,69 +109,36 @@ function loadAvgImg(){
     colors_avg_img.pop();
 }
 
-
 function draw() {
-    //background(0);
-    print(colors_avg_img,colors_avg_img.length)
     let reduce = 1.0;
-    // print('img width 2',img.width)
     let w = img.width/scale_img/reduce;
     let h = img.height/scale_img/reduce;
 
     smaller = createImage(w,h,RGB);
     smaller.copy(img,0,0,img.width,img.height,0,0,w,h);
 
-    //small image to take the pixels of that are going to be changed for an image
-    //smaller.loadPixels();
+    smaller.loadPixels();
 
-    let to_show = createImage(width,height);
-    for(let i=0;i<w;i++){
-        for(let j=0;j<h;j++){
-            pxcol = smaller.get(i,j);
-
-            //fill(pxcol);noStroke();rect(i*scale/2,j*scale/2,scale/2,scale/2);
-
-            let load_closer = loadImageCloser(pxcol);
-            //image(load_closer,-width/2+i*scale,-height/2+j*scale,scale,scale)
-            //f.copy(img,0,0,width,height,0,0,width/2,height/2);
-            to_show.copy(load_closer,0,0,load_closer.width,load_closer.height,i*scale_img,j*scale_img,scale_img,scale_img)
-            //to_show.set(load_closer,-width/2+i*scale,-height/2+j*scale,scale,scale)
-            //to_show.set(i,j,color(0,90,102));
-        }
-    }
-    
     shaderTexture.shader(grayShader);
     scale(1.0,-1.0);
-    grayShader.setUniform('u_img', to_show);
+    grayShader.setUniform('u_img', smaller);
+    grayShader.setUniform('u_res_sm',[float(smaller.width),float(smaller.height)])
+    grayShader.setUniform('images',images);
+    grayShader.setUniform('colors_avg_img',colors_avg_img2);
+    grayShader.setUniform('images_resolution', [float(scale_img*colors_img.length),float(scale_img)]);
     grayShader.setUniform('u_resolution', [float(width),float(height)]);
 
     texture(shaderTexture);
     shaderTexture.rect(0,0,512,512);
     rect(-256,-256,512,512);
 
+    temp = createImage(w*3,h*3,RGB);
+    temp.copy(img,0,0,img.width,img.height,0,0,w*3,h*3);
+    temp.loadPixels();
+
+    scale(1.0,-1.0);
+    image(temp,-256,-256);
+
     noLoop();
     print('END')
-}
-
-function loadImageCloser(col){
-    let min = Number.MAX_VALUE;
-    let pos = -1;
-    for(let i in colors_avg_img){
-        let de = deltaE(col,colors_avg_img[i]);
-        // print('DE',de)
-        if(min>de){
-            min = de;
-            pos = i;
-        }
-    }
-    return colors_img[pos];
-}
-
-function deltaE(col1,col2){
-    let acum = 0;
-    for(let i=0;i<3;i++){
-        let temp = col1[i] - col2[i];
-        acum += temp*temp;
-    }
-    return Math.sqrt(acum)
 }
