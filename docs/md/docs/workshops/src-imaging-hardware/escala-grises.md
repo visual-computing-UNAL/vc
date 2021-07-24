@@ -59,20 +59,5 @@ for (let i = 1; i < fingers.width; i++) {
 
 ### (hacer click en los cuadros para correr los videos)
 
-### Original
-> :P5 sketch=/docs/sketches/imaging-hardware/gray-scale/video/original-video.js, width=320, height=240
-
-### Average
-> :P5 sketch=/docs/sketches/imaging-hardware/gray-scale/video/average-video.js, width=320, height=240
-
-### Luma Y=1/4
-> :P5 sketch=/docs/sketches/imaging-hardware/gray-scale/video/luma1-video.js, width=320, height=240
-
-### Luma Y=1
-> :P5 sketch=/docs/sketches/imaging-hardware/gray-scale/video/luma2-video.js, width=320, height=240
-
-### Luma Y=4
-> :P5 sketch=/docs/sketches/imaging-hardware/gray-scale/video/luma3-video.js, width=320, height=240
-
 ### Test
-[comment]: <>  (> :P5 sketch=/docs/sketches/imaging-hardware/gray-scale/image/gray-colorrgbshader.js, width=512, height=256)
+> :P5 sketch=/docs/sketches/imaging-hardware/gray-scale/image/gray-colorrgbshader.js, width=1000, height=1000
