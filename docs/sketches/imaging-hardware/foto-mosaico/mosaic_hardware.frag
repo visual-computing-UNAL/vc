@@ -12,10 +12,10 @@ uniform vec2 images_resolution;
 
 uniform vec3 colors_avg_img[173];
 
+
+uniform int scale_img;
+
 float divisions = 1.0;
-
-int scale_img = 15;
-
 
 vec2 pos_img(vec2 original){
 	vec2 small = original/u_resolution*divisions;

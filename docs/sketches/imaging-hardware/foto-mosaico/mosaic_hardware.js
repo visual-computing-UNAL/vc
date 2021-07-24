@@ -19,7 +19,7 @@ let create_new_img = false;
 function preload() {
   img = loadImage('/vc/docs/sketches/imaging-hardware/foto-mosaico/lenna.jpg');
   images = loadImage('/vc/docs/sketches/imaging-hardware/foto-mosaico/images.png')
-  grayShader = loadShader('/vc/docs/sketches/imaging-hardware/foto-mosaico/gray_rgb.vert', '/vc/docs/sketches/imaging-hardware/foto-mosaico/gray_rgb.frag');
+  grayShader = loadShader('/vc/docs/sketches/imaging-hardware/foto-mosaico/mosaic_hardware.vert', '/vc/docs/sketches/imaging-hardware/foto-mosaico/mosaic_hardware.frag');
   preloadFilesColors();
   preloadAverageImg();
 }
@@ -127,6 +127,7 @@ function draw() {
     grayShader.setUniform('colors_avg_img',colors_avg_img2);
     grayShader.setUniform('images_resolution', [float(scale_img*colors_img.length),float(scale_img)]);
     grayShader.setUniform('u_resolution', [float(width),float(height)]);
+    grayShader.setUniform('scale_img', int(scale_img));
 
     texture(shaderTexture);
     shaderTexture.rect(0,0,512,512);
