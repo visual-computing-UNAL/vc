@@ -8,4 +8,6 @@
 
 > [Conversión de la imagen a un foto-mosaico](/docs/workshops/src-imaging-hardware/foto-mosaico)
 
+> [Comparativa de la eficiencia computacional ](/docs/workshops/src-imaging-hardware/comparativa)
+
 > :ToCPrevNext
