@@ -22,6 +22,8 @@ let scale_img = 15;
 let create_img = false;
 let create_new_img = false;
 
+let s_canvas = 768;
+
 function preload() {
   img = loadImage('/vc/docs/sketches/imaging-hardware/foto-mosaico/lenna.jpg');
   images = loadImage('/vc/docs/sketches/imaging-hardware/foto-mosaico/images.png')
@@ -39,8 +41,8 @@ function preloadFilesColors(){
 }
 
 function setup() {
-    createCanvas(512, 512, WEBGL);
-    shaderTexture = createGraphics(512, 512, WEBGL);
+    createCanvas(s_canvas, s_canvas, WEBGL);
+    shaderTexture = createGraphics(s_canvas, s_canvas, WEBGL);
     shaderTexture.noStroke();
 
     //pre procesamiento
@@ -126,8 +128,10 @@ function draw() {
     //en caso de que se quisiera reducir el tamaño de la imagen
     let reduce = 1.0;
     //nuevo tamaño de la imagen despues de reducirla y decidir cual va a hacer el tamaño de las piezas
-    let w = img.width/scale_img/reduce;
-    let h = img.height/scale_img/reduce;
+    let w = img.width/10/reduce;
+    let h = img.height/10/reduce;
+
+    print("W",w*15,"H",h*15)
 
     //imagen pequeña a la que se le van a remplazar los pixeles por piezas para crear el mosaico
     smaller = createImage(w,h,RGB);
@@ -150,8 +154,8 @@ function draw() {
     grayShader.setUniform('scale_img', int(scale_img));
 
     texture(shaderTexture);
-    shaderTexture.rect(0,0,512,512);
-    rect(-256,-256,512,512);
+    shaderTexture.rect(0,0,s_canvas,s_canvas);
+    rect(-s_canvas/2,-s_canvas/2,s_canvas,s_canvas);
 
     //imagen para pequeña para tomar de referencia
     temp = createImage(w*3,h*3,RGB);
@@ -159,7 +163,7 @@ function draw() {
     temp.loadPixels();
 
     scale(1.0,-1.0);
-    image(temp,-256,-256);
+    image(temp,-s_canvas/2,-s_canvas/2);
 
     noLoop();
     print('END')
