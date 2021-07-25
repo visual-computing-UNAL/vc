@@ -12,21 +12,14 @@ uniform vec2 images_resolution;
 
 uniform vec3 colors_avg_img[173];
 
+
+uniform int scale_img;
+
 float divisions = 1.0;
 
-int scale_img = 15;
-
-
-vec2 pos_img(vec2 original){
-	vec2 small = original/u_resolution*divisions;
-	return vec2(mod(small.x,1.0),mod(small.y,1.0));
-}
-
-vec4 get_px_img(vec2 original){
-	return vec4(texture2D(u_img,pos_img(original)).rgb, 1);
-}
-
+//valor entre 0-1 que representa la posicion del pixel en la imange que contiene todas las piezas
 vec2 pos_images(int pos,vec2 original){
+    //calculo explicado en el articulo
     vec2 pos_pix = vec2(float(pos*scale_img)+mod(float(original.x),float(scale_img)),mod(float(original.y),float(scale_img)));
     return pos_pix/images_resolution;
 }
@@ -40,6 +33,7 @@ float deltaE(vec3 col1,vec3 col2){
     return acum;//sqrt(acum)
 }
 
+//Se encuentra la pieza que tiene el color mas cercano utilizando la funcion delta E
 int loadImageCloser(vec3 col){
     float min = 1e8;
     int pos = -1;
@@ -54,21 +48,15 @@ int loadImageCloser(vec3 col){
 }
 
 vec4 get_px(int pos,vec2 original){
-	return vec4(texture2D(images,pos_images(pos,original)).rgb, 1);
-}
-
-void draw() {
-    vec2 cord = vec2(int(gl_FragCoord.x)/scale_img,int(gl_FragCoord.y)/scale_img);
-    vec2 position = cord/u_res_sm;
-    vec4 texel = texture2D(u_img,position);//color of the image 
-    vec3 rgb_val = vec3(texel[0],texel[1],texel[2]);
-    int pxcol = loadImageCloser(rgb_val);
-
-    gl_FragColor = get_px(pxcol,gl_FragCoord.xy);
+	return vec4(texture2D(images,pos_images(pos,original)).rgb, 1);//calculo del color correspondiente, nos e usa transparencia
 }
 
 void main() {
-	vec2 original = gl_FragCoord.xy;
-	gl_FragColor = get_px_img(original);
-    draw();
+    vec2 cord = vec2(int(gl_FragCoord.x)/scale_img,int(gl_FragCoord.y)/scale_img);//posicion a la que corresponde en la imagen pequeña
+    vec2 position = cord/u_res_sm;//Valor entre 0 y 1
+    vec4 texel = texture2D(u_img,position);//color en la imagen pequeña 
+    vec3 rgb_val = vec3(texel[0],texel[1],texel[2]);
+    int pxcol = loadImageCloser(rgb_val);//posicion de la pieza a la que corresponde
+
+    gl_FragColor = get_px(pxcol,gl_FragCoord.xy);//color del pixel en la piza correspondiente
 }
