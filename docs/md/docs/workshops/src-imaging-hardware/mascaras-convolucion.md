@@ -19,6 +19,97 @@ Una vez el color resultante del proceso de convolución, este debe aplicarse a c
 ## Matriz de Sharpen Utilizada
 > :P5 sketch=/docs/sketches/imaging-hardware/mascaras-convolucion/image/m-convolucion-SharpenMatrix.js, width=130, height=130
 ## Imagen con Máscara de Convolución
+
+> :Tabs
+> > :Tab title=Result
+> >
+> > > :P5 sketch=/docs/sketches/imaging-hardware/convolution-masks/mask.js, width=512, height=512
+>
+> > :Tab title=P5js
+> > 
+> > ```js | mask.js
+> > let img;
+> > function preload() {
+> >   shader_ = loadShader('/vc/docs/sketches/imaging-hardware/convolution-masks/mask.vert', '/vc/docs/sketches/> > > > imaging-hardware/convolution-masks/mask.frag');
+> >   img = loadImage('/vc/docs/sketches/imaging/mascaras-convolucion/image/image-test.jpg');
+> > }
+> >function shader_set(){
+> >   shader(shader_);
+> >   shader_.setUniform('texture', img);
+> >   shader_.setUniform('texOffset',[1/img.width,1/img.height]);    
+> >}
+> >function setup() {
+> >  createCanvas(640, 400, WEBGL);
+> >  noStroke();
+> >  textureMode(NORMAL); 
+> >  shader_set();
+> >}
+> >function set_vertex(){
+> >    vertex(-width / 2, height / 2, 0, 0, 1);
+> >    vertex(width / 2, height / 2, 0, 1, 1);
+> >    vertex(width / 2, -height / 2, 0, 1, 0);
+> >    vertex(-width / 2, -height / 2, 0, 0, 0);
+> >}
+> >function draw() {
+> >  background(0);
+> >  beginShape() 
+> >  set_vertex()
+> >  shader_.setUniform('kernel', [-1, 0, 1, -2, 0, 2,-1, 0, 1]);
+> >  endShape(CLOSE)
+> >}
+> > ```
+>
+> > :Tab title=.vert
+> >
+> > ```glsl | mask.vert
+> >precision highp float;
+> >attribute vec3 aPosition;
+> >attribute vec2 aTexCoord;
+> >attribute vec4 aVertexColor;
+> >uniform mat4 uProjectionMatrix;
+> >uniform mat4 uModelViewMatrix;
+> >varying vec4 vVertexColor;
+> >varying vec2 vTexCoord;
+> >void main() {
+> >  vVertexColor = aVertexColor;
+> >  vTexCoord = aTexCoord;
+> >  gl_Position = uProjectionMatrix * uModelViewMatrix * vec4(aPosition, 1.0);
+> >}
+> > ```
+>
+> > :Tab title=.frag
+> > ```glsl | mask.frag
+> >precision mediump float;
+> >uniform float kernel[9];
+> >vec4 col[9];
+> >vec2 tc[9];
+> >uniform sampler2D texture;
+> >uniform vec2 texOffset;
+> >varying vec4 vVertexColor;
+> >varying vec2 vTexCoord;
+> >const vec4 lumcoeff = vec4(0.299, 0.587, 0.114, 0);
+> >void main() {
+> >  tc[0] = vTexCoord + vec2(-texOffset.s, -texOffset.t);
+> >  tc[1] = vTexCoord + vec2(         0.0, -texOffset.t);
+> >  tc[2] = vTexCoord + vec2(+texOffset.s, -texOffset.t);
+> >  tc[3] = vTexCoord + vec2(-texOffset.s,          0.0);
+> >  tc[4] = vTexCoord + vec2(         0.0,          0.0);
+> >  tc[5] = vTexCoord + vec2(+texOffset.s,          0.0);
+> >  tc[6] = vTexCoord + vec2(-texOffset.s, +texOffset.t);
+> >  tc[7] = vTexCoord + vec2(         0.0, +texOffset.t);
+> >  tc[8] = vTexCoord + vec2(+texOffset.s, +texOffset.t);
+> >  for ( int i=0;i<9;i++){
+> >    col[i] = texture2D(texture, tc[i]);
+> >  }
+> >  vec4 sum = kernel[0] * col[0];
+> >  for (int i = 1; i<9 ; i++){
+> >    vec4 pc =  kernel[i] * col[i];
+> >    sum += pc;
+> >  }
+> >  gl_FragColor = vec4(vec3(sum), 1.0) * vVertexColor;
+> >}
+> > ```
+
 ## Matriz de Bordes
 > :P5 sketch=/docs/sketches/imaging-hardware/convolution-masks/mask.js, width=650, height=400
 ## Una más de Matriz de Detección de ordes
