@@ -26,7 +26,7 @@ function draw() {
     textSize(32);
     fill(255, 0, 0);
     text('Framerate: ' + Math.floor(frameRate()), 0, 220);
-    
+    console.log(frameRate());
 }
 
 function setPixels(i, j, mat, mat_size, fingers) {
