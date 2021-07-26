@@ -19,3 +19,7 @@ La imagen de la izquierda corresponde a los framerates de la implementación por
 Dados los resultados anteriores podemos concluir que la implementación por hardware es mucho más eficiente computacionalmente ya que esta pudo obtener framerates máximos de 83fps, mientras que el framerate máximo de la implementación por software fue de 62fps por lo que fue para este caso en particular un incremento de casi un 25% aproximadamente.
 
 ## Aplicación de máscaras de convolución 
+
+> :P5 sketch=/docs/sketches/imaging-hardware/comparativa/fingers-conv-mask-software.js, width=320, height=240
+
+> :P5 sketch=/docs/sketches/imaging-hardware/comparativa/fingers-conv-mask-hardware.js, width=320, height=240
