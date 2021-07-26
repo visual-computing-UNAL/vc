@@ -22,12 +22,14 @@ let scale_img = 15;
 let create_img = false;
 let create_new_img = false;
 
+let date;
+
 function preload() {
-  img = loadImage('/vc/docs/sketches/imaging-hardware/foto-mosaico/lenna.jpg');
-  images = loadImage('/vc/docs/sketches/imaging-hardware/foto-mosaico/images.png')
-  grayShader = loadShader('/vc/docs/sketches/imaging-hardware/foto-mosaico/mosaic_hardware.vert', '/vc/docs/sketches/imaging-hardware/foto-mosaico/mosaic_hardware.frag');
-  preloadFilesColors();
-  preloadAverageImg();
+    img = loadImage('/vc/docs/sketches/imaging-hardware/foto-mosaico/lenna.jpg');
+    images = loadImage('/vc/docs/sketches/imaging-hardware/foto-mosaico/images.png')
+    grayShader = loadShader('/vc/docs/sketches/imaging-hardware/foto-mosaico/mosaic_hardware.vert', '/vc/docs/sketches/imaging-hardware/foto-mosaico/mosaic_hardware.frag');
+    preloadFilesColors();
+    preloadAverageImg();
 }
 
 function preloadFilesColors(){
@@ -86,7 +88,7 @@ function createImagesAverageColor(){
 
         let sum = [0,0,0];
 
-        print(h,w);
+        //print(h,w);
 
         for(let i=0;i<w;i++){
             for(let j=0;j<h;j++){
@@ -101,7 +103,7 @@ function createImagesAverageColor(){
         // print('sum',sum)
         // print('avrg',avrg)
         img_vrg_col.push(avrg[0]+' '+avrg[1]+' '+avrg[2])
-        print('img '+im+' was created')
+        //print('img '+im+' was created')
     }
     saveStrings(img_vrg_col,'img_vrg_col.txt')
 }
@@ -123,18 +125,19 @@ function loadAvgImg(){
 }
 
 function draw() {
+    date = Date.now();
     //en caso de que se quisiera reducir el tamaño de la imagen
     let reduce = 1.0;
     //nuevo tamaño de la imagen despues de reducirla y decidir cual va a hacer el tamaño de las piezas
     let w = img.width/scale_img/reduce;
     let h = img.height/scale_img/reduce;
-
+    
     //imagen pequeña a la que se le van a remplazar los pixeles por piezas para crear el mosaico
     smaller = createImage(w,h,RGB);
     smaller.copy(img,0,0,img.width,img.height,0,0,w,h);
-
+    
     smaller.loadPixels();
-
+    
     shaderTexture.shader(grayShader);
     scale(1.0,-1.0);
     //imagen pequeña a la que se le van a remplazar los pixeles por piezas para crear el mosaico
@@ -148,19 +151,20 @@ function draw() {
     grayShader.setUniform('images_resolution', [float(scale_img*colors_img.length),float(scale_img)]);
     grayShader.setUniform('u_resolution', [float(width),float(height)]);
     grayShader.setUniform('scale_img', int(scale_img));
-
+    
     texture(shaderTexture);
     shaderTexture.rect(0,0,512,512);
     rect(-256,-256,512,512);
-
+    
     //imagen para pequeña para tomar de referencia
     temp = createImage(w*3,h*3,RGB);
     temp.copy(img,0,0,img.width,img.height,0,0,w*3,h*3);
     temp.loadPixels();
-
+    
     scale(1.0,-1.0);
     image(temp,-256,-256);
-
+    
     noLoop();
-    print('END')
+    print("TIME HARDWARE: ",Date.now()-date)
+    //print('END')
 }

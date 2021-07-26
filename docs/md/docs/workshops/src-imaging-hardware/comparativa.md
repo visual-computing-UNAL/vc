@@ -30,3 +30,30 @@ Framerates de la implementación por software y la imagen de la derecha correspo
 > :P5 sketch=/docs/sketches/imaging-hardware/comparativa/masks-average-video.js, width=500, height=360
 
 Dados los resultados anteriores podemos concluir que la implementación por hardware es mucho más eficiente computacionalmente ya que esta pudo obtener framerates máximos de 59fps, mientras que el framerate máximo de la implementación por software fue de 1fps por lo que fue para este caso en particular un incremento de casi un 60% aproximadamente.
+
+# Mosaico
+Para realizar la comparativa entre hardware y software lo primero que hicimos fue hacer un codigo que hiciera el mismo mosaico pero con la version de software, en este caso utilizamos el mosaico de la imagen pequeña:
+
+## Software
+> :P5 sketch=/docs/sketches/imaging-hardware/foto-mosaico/software.js, width=512, height=512
+
+## Hardware
+> :P5 sketch=/docs/sketches/imaging-hardware/foto-mosaico/software.js, width=512, height=512
+
+Una vez realizado el mosaico en los dos modos, procedimos a tomar los tiempos que van a ser utilizados para estimar la diferencia en el rendimiento, para esto hicimos uso del reloj de la computadora y tomamos la diferencias de tiempo desde el principio del llamado a la funcion draw() al final del llamado de esta funcion, realizamos este proceso 10 veces como se puede observar en la siguiente tabla:
+
+|Indice| hardware(ms) | software(ms) |
+|:---|:----:| :---:|
+|1|19|35|
+|2|22|39|
+|3|22|35|
+|4|21|35|
+|5|22|36|
+|6|24|36|
+|7|20|33|
+|8|17|31|
+|9|22|37|
+|10|28|31|
+|Promedio| 22 |34.8 |
+
+Como podemos observar a la version realizada en harware se renderiza la imagen en mucho menos tiempo, es decir en promedio la version de software se mas de un 50% que la version de hardware
