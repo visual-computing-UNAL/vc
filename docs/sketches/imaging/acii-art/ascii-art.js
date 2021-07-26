@@ -17,6 +17,7 @@ function setup() {
 }
 
 function asciify(pic) {
+  date = Date.now();
   var res = '<pre>';
   for (var i=0; i<60; i++) {
     var line = '';
@@ -35,4 +36,5 @@ function asciify(pic) {
   }
   res += '</pre>'
   resdiv.html(res);
+  print("TIME SOFTWARE: ", Date.now()-date);
 }
