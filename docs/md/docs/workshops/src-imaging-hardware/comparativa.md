@@ -31,6 +31,25 @@ Framerates de la implementación por software y la imagen de la derecha correspo
 
 Dados los resultados anteriores podemos concluir que la implementación por hardware es mucho más eficiente computacionalmente ya que esta pudo obtener framerates máximos de 59fps, mientras que el framerate máximo de la implementación por software fue de 1fps por lo que fue para este caso en particular un incremento de casi un 60% aproximadamente.
 
+# Ascii
+En el caso del Ascii podemos realizar una comparacion de los tiempos que toman en ejecutarse, teniendo en cuenta que la solucion por software esta generando un div con los caracteres y la de hardware esta procesando y dibujando la imagen. En el caso del Software usamos el reloj de la computadora en la funcion asciify() y en hardware en el draw(). A continuacion veremos el rendimiento en ambos casos:
+
+|Indice| hardware(ms) | software(ms) |
+|:---|:----:| :---:|
+|1|41|63|
+|2|29|74|
+|3|56|70|
+|4|19|87|
+|5|23|68|
+|6|45|71|
+|7|19|62|
+|8|35|63|
+|9|36|72|
+|10|28|64|
+|Promedio| 33.1 |69.4 |
+
+En vista de los tiempos de hardware y software podemos notar que el hardware renderiza la imagen en el 47.7% del tiempo que le toma al software generar el div.
+
 # Mosaico
 Para realizar la comparativa entre hardware y software lo primero que hicimos fue hacer un codigo que hiciera el mismo mosaico pero con la version de software, en este caso utilizamos el mosaico de la imagen pequeña:
 
