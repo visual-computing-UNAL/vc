@@ -75,4 +75,4 @@ Una vez realizado el mosaico en los dos modos, procedimos a tomar los tiempos qu
 |10|28|31|
 |Promedio| 22 |34.8 |
 
-Como podemos observar a la version realizada en harware se renderiza la imagen en mucho menos tiempo, es decir en promedio la version de software se mas de un 50% que la version de hardware
+Como podemos observar a la versión realizada en hardware se renderiza la imagen en mucho menos tiempo, es decir en promedio la versión de software es mas de un 50% mas lenta que la versión de hardware
